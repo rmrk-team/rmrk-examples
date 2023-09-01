@@ -1,0 +1,33 @@
+const BASE_IPFS_URI = "ipfs://ABCD/"; // TODO update
+
+// Collection metadata
+const CHUNKY_METADATA = BASE_IPFS_URI + "collection-metadata/chunky.json";
+const CHUNKY_BACKGROUND_METADATA = BASE_IPFS_URI + "collection-metadata/chunky-background.json";
+const CHUNKY_ITEM_METADATA = BASE_IPFS_URI + "collection-metadata/chunky-item.json";
+
+// Catalog metadata
+const CHUNKY_CATALOG_METADATA = BASE_IPFS_URI + "catalog/metadata.json";
+const CHUNKY_BACKGROUND_SLOT_METADATA = BASE_IPFS_URI + "catalog/slots/background.json";
+const CHUNKY_ITEM_LEFT_SLOT_METADATA = BASE_IPFS_URI + "catalog/slots/item-left.json";
+const CHUNKY_ITEM_RIGHT_SLOT_METADATA = BASE_IPFS_URI + "catalog/slots/item-right.json";
+
+// Image data
+const CHUNKY_BACKGROUND_BASE_METADATA_URI = BASE_IPFS_URI + "backgrounds/";
+const CHUNKY_ITEM_BASE_METADATA_URI = BASE_IPFS_URI + "items/";
+const CHUNKY_CHUNKY_PARTS_BASE_METADATA_URI = BASE_IPFS_URI + "chunky-parts/";
+const CHUNKY_CHUNKY_PRERENDER_BASE_METADATA_URI = BASE_IPFS_URI + "chunky-prerender/";
+
+export {
+  BASE_IPFS_URI,
+  CHUNKY_METADATA,
+  CHUNKY_BACKGROUND_METADATA,
+  CHUNKY_ITEM_METADATA,
+  CHUNKY_CATALOG_METADATA,
+  CHUNKY_BACKGROUND_SLOT_METADATA,
+  CHUNKY_ITEM_LEFT_SLOT_METADATA,
+  CHUNKY_ITEM_RIGHT_SLOT_METADATA,
+  CHUNKY_BACKGROUND_BASE_METADATA_URI,
+  CHUNKY_ITEM_BASE_METADATA_URI,
+  CHUNKY_CHUNKY_PARTS_BASE_METADATA_URI,
+  CHUNKY_CHUNKY_PRERENDER_BASE_METADATA_URI,
+}

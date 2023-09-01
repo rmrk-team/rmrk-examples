@@ -2,11 +2,11 @@ import { ethers } from 'hardhat';
 import { expect } from 'chai';
 import { BigNumber } from 'ethers';
 import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
-import { SimpleEquippable } from '../typechain-types';
-import { InitDataNativePay } from '../typechain-types/contracts/SimpleEquippable';
+import { Chunky } from '../typechain-types';
+import { InitDataNativePay } from '../typechain-types/contracts/Chunky';
 
-async function fixture(): Promise<SimpleEquippable> {
-  const equipFactory = await ethers.getContractFactory('SimpleEquippable');
+async function fixture(): Promise<Chunky> {
+  const equipFactory = await ethers.getContractFactory('Chunky');
 
   const initData: InitDataNativePay.InitDataStruct = {
     royaltyRecipient: ethers.constants.AddressZero,
@@ -15,7 +15,7 @@ async function fixture(): Promise<SimpleEquippable> {
     pricePerMint: ethers.utils.parseEther('1.0'),
   };
 
-  const equip: SimpleEquippable = await equipFactory.deploy(
+  const equip: Chunky = await equipFactory.deploy(
     'Kanaria',
     'KAN',
     'ipfs://collectionMeta',
@@ -27,8 +27,8 @@ async function fixture(): Promise<SimpleEquippable> {
   return equip;
 }
 
-describe('SimpleEquippable Assets', async () => {
-  let equip: SimpleEquippable;
+describe('Chunky Assets', async () => {
+  let equip: Chunky;
   beforeEach(async function () {
     equip = await loadFixture(fixture);
   });
