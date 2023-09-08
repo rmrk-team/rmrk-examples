@@ -200,7 +200,7 @@ async function mintChunkies(chunkies: Chunky, catalogAddress: string, mintTo: Si
   await chunkies.addEquippableAssetEntry(
     C.EQUIPPABLE_GROUP_FOR_CHUNKIES_DEFAULT, // Equippable group
     catalogAddress, // Catalog address
-    '', // Metadata URI, optional for composables
+    `${C.BASE_IPFS_URI}/chunkies/full/1.json`, // Metadata URI, we are using the same as tokenURI. We could use a fallback one for all.
     [
       // Fixed and slots part ids:
       C.CHUNKY_V1_HEAD_FIXED_PART_ID,
@@ -210,9 +210,9 @@ async function mintChunkies(chunkies: Chunky, catalogAddress: string, mintTo: Si
       C.CHUNKY_RIGHT_HAND_SLOT_PART_ID,
     ],
   );
-  await chunkies.mint(mintTo.address, 1, `${C.BASE_IPFS_URI}/chunkies/full/1.json`);
   // WARNING: If any asset is added in between, this no longer matches the id of the newly added asset, you can listen to the AssetAdded event and get the assetId from, there.
   const newAssetId = await chunkies.totalAssets();
+  await chunkies.mint(mintTo.address, 1, `${C.BASE_IPFS_URI}/chunkies/full/1.json`);
   // WARNING: If any token is burnt or minted this no longer matches the id of the newly minted token, you can listen to the Transfer event and get the tokenId from, there.
   const newTokenId = await chunkies.totalSupply();
   await chunkies.addAssetToToken(newTokenId, newAssetId, 0);
@@ -226,7 +226,7 @@ async function mintChunkies(chunkies: Chunky, catalogAddress: string, mintTo: Si
     `${C.BASE_IPFS_URI}/chunkies/full/2.json`, // TokenURI
     C.EQUIPPABLE_GROUP_FOR_CHUNKIES_DEFAULT, // Equippable group
     catalogAddress, // Catalog address
-    '', // Metadata URI, optional for composables
+    `${C.BASE_IPFS_URI}/chunkies/full/2.json`, // Metadata URI, we are using the same as tokenURI. We could use a fallback one for all.
     [
       // Fixed and slots part ids:
       C.CHUNKY_V2_HEAD_FIXED_PART_ID,
@@ -241,7 +241,7 @@ async function mintChunkies(chunkies: Chunky, catalogAddress: string, mintTo: Si
     `${C.BASE_IPFS_URI}/chunkies/full/3.json`, // TokenURI
     C.EQUIPPABLE_GROUP_FOR_CHUNKIES_DEFAULT, // Equippable group
     catalogAddress, // Catalog address
-    '', // Metadata URI, optional for composables
+    `${C.BASE_IPFS_URI}/chunkies/full/3.json`, // Metadata URI, we are using the same as tokenURI. We could use a fallback one for all.
     [
       // Fixed and slots part ids:
       C.CHUNKY_V3_HEAD_FIXED_PART_ID,
@@ -256,7 +256,7 @@ async function mintChunkies(chunkies: Chunky, catalogAddress: string, mintTo: Si
     `${C.BASE_IPFS_URI}/chunkies/full/4.json`, // TokenURI
     C.EQUIPPABLE_GROUP_FOR_CHUNKIES_DEFAULT, // Equippable group
     catalogAddress, // Catalog address
-    '', // Metadata URI, optional for composables
+    `${C.BASE_IPFS_URI}/chunkies/full/4.json`, // Metadata URI, we are using the same as tokenURI. We could use a fallback one for all.
     [
       // Fixed and slots part ids:
       C.CHUNKY_V4_HEAD_FIXED_PART_ID,
@@ -268,10 +268,10 @@ async function mintChunkies(chunkies: Chunky, catalogAddress: string, mintTo: Si
   );
   await chunkies.mintWithEquippableAsset(
     mintTo.address, // To
-    `${C.BASE_IPFS_URI}/chunkies/full/4.json`, // TokenURI
+    `${C.BASE_IPFS_URI}/chunkies/full/5.json`, // TokenURI
     C.EQUIPPABLE_GROUP_FOR_CHUNKIES_DEFAULT, // Equippable group
     catalogAddress, // Catalog address
-    '', // Metadata URI, optional for composables
+    `${C.BASE_IPFS_URI}/chunkies/full/5.json`, // Metadata URI, we are using the same as tokenURI. We could use a fallback one for all.
     [
       // Fixed and slots part ids:
       C.CHUNKY_V3_HEAD_FIXED_PART_ID,
@@ -352,7 +352,7 @@ async function mintItems(items: ChunkyItem, chunkiesAddress: string) {
   const newTokenId = await items.totalSupply();
   await items.addAssetToToken(newTokenId, boneLeftAssetId, 0);
   await items.addAssetToToken(newTokenId, boneRightAssetId, 0);
-  await items.nestTransferFrom(deployer.address, chunkiesAddress, newTokenId, 1, '');
+  await items.nestTransferFrom(deployer.address, chunkiesAddress, newTokenId, 1, []);
 
   // 2nd WAY TO DO IT: Custom method on items contract
   // Sending a flag NFT to the second chunky, with 2 assets, one for each hand
@@ -382,6 +382,13 @@ async function mintItems(items: ChunkyItem, chunkiesAddress: string) {
     5, // destinationId
     `${C.BASE_IPFS_URI}/items/spear/left.json`, // TokenURI,
     [spearLeftAssetId, spearRightAssetId], // Assets
+  );
+  // Sending a flag NFT to the first chunky, with 2 assets, one for each hand
+  await items.nestMintWithAssets(
+    chunkiesAddress, // To
+    1, // destinationId
+    `${C.BASE_IPFS_URI}/items/flag/left.json`, // TokenURI,
+    [flagLeftAssetId, flagRightAssetId], // Assets
   );
 }
 

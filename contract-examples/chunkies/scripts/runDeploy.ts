@@ -25,6 +25,9 @@ async function main() {
   await mintChunkies(chunkies, catalog.address, deployer);
   console.log('Chunkies minted');
 
+  // So holders do not need to accept each item
+  await chunkies.setAutoAcceptCollection(items.address);
+
   // Items reuse assets, we only need to add them once
   await addItemAssets(items, chunkies.address);
   console.log('Item assets added');
