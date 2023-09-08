@@ -1,0 +1,28 @@
+{
+    "name": "Chunky #2",
+    "description": "Provides fast, cheap, and easy access to Skybreach even without a Kanaria as an avatar.",
+    "externalUri": "https://skybreach.app/",
+    "external_url": "https://skybreach.app/",
+    "image": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/chunkies/full/2.png",
+    "attributes": [
+        {
+          "label": "Head",
+          "trait_type": "Head",
+          "type": "string",
+          "value": "Blue"
+        },
+        {
+          "label": "Body",
+          "trait_type": "Head",
+          "type": "string",
+          "value": "Blue"
+        },
+        {
+          "label": "Hands",
+          "trait_type": "Head",
+          "type": "string",
+          "value": "Blue"
+        }
+    ]
+  }
+  

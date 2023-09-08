@@ -1,0 +1,11 @@
+{
+    "name": "Spear",
+    "description": "Chunky Spear",
+    "externalUri": "https://skybreach.app/",
+    "external_url": "https://skybreach.app/",
+    "image": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/spear/left.svg",
+    "mediaUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/spear/left.svg",
+    "thumbnailUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/spear/thumb.png",
+    "preferThumb": true
+  }
+  

@@ -1,0 +1,11 @@
+{
+    "name": "Pencil",
+    "description": "Chunky Pencil",
+    "externalUri": "https://skybreach.app/",
+    "external_url": "https://skybreach.app/",
+    "image": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/pencil/left.svg",
+    "mediaUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/pencil/left.svg",
+    "thumbnailUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/pencil/thumb.png",
+    "preferThumb": true
+  }
+  
