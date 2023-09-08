@@ -53,6 +53,7 @@ async function deployContracts(): Promise<{
     });
     await run('verify:verify', {
       address: catalog.address,
+      contract: "contracts/ChunkyCatalog.sol:ChunkyCatalog", // Needed so hardhat can distinguish it from RMRKCatalogImpl
       constructorArguments: catalogArgs,
     });
   }
