@@ -41,7 +41,8 @@ contract ChunkyItem is RMRKEquippablePreMint {
         uint256 length = assetIds.length;
         for (uint256 i = 0; i < length; i++) {
             addAssetToToken(tokenId, assetIds[i], 0);
-            if (i != 0) { // Only first asset or assets added by token owner are auto-accepted, so we need to accept the others.
+            // Only first asset or assets added by token owner are auto-accepted, so we mighty need to accept for the rest of cases
+            if (_pendingAssets[tokenId].length != 0) {
                 _acceptAsset(tokenId, 0 , assetIds[i]);
             }
         }
