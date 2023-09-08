@@ -59,7 +59,7 @@ describe('Chunkies', async () => {
     });
 
     const expectedComposed = [
-      'ipfs://ABCD/chunkies/full/1.json', // metadataURI
+      'ipfs://QmRy66YmyDFKeMyUjwUUoci1BsUAtU6LSPkPZCaZNC9F18/chunkies/full/1.json', // metadataURI
       ethers.BigNumber.from('1'), // equippableGroupId
       '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0', // catalogAddress
       [
@@ -67,17 +67,17 @@ describe('Chunkies', async () => {
         [
           ethers.BigNumber.from('1'), // partId
           4, // z
-          'ipfs://ABCD/catalog/fixed/v1/head.json', // metadataURI
+          'ipfs://QmRy66YmyDFKeMyUjwUUoci1BsUAtU6LSPkPZCaZNC9F18/catalog/fixed/v1/head.json', // metadataURI
         ],
         [
           ethers.BigNumber.from('2'), // partId
           2, // z
-          'ipfs://ABCD/catalog/fixed/v1/body.json', // metadataURI
+          'ipfs://QmRy66YmyDFKeMyUjwUUoci1BsUAtU6LSPkPZCaZNC9F18/catalog/fixed/v1/body.json', // metadataURI
         ],
         [
           ethers.BigNumber.from('3'), // partId
           8, // z
-          'ipfs://ABCD/catalog/fixed/v1/hands.json', // metadataURI
+          'ipfs://QmRy66YmyDFKeMyUjwUUoci1BsUAtU6LSPkPZCaZNC9F18/catalog/fixed/v1/hands.json', // metadataURI
         ],
       ],
       [
@@ -88,8 +88,8 @@ describe('Chunkies', async () => {
           6, // z
           '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512', // childAddress
           ethers.BigNumber.from('1'), // childId
-          'ipfs://ABCD/items/bone/left.json', // childAssetMetadata
-          'ipfs://ABCD/catalog/slots/left_hand.json', // partMetadata
+          'ipfs://QmRy66YmyDFKeMyUjwUUoci1BsUAtU6LSPkPZCaZNC9F18/items/bone/left.json', // childAssetMetadata
+          'ipfs://QmRy66YmyDFKeMyUjwUUoci1BsUAtU6LSPkPZCaZNC9F18/catalog/slots/left_hand.json', // partMetadata
         ],
         [
           ethers.BigNumber.from('1002'), // partId
@@ -97,8 +97,8 @@ describe('Chunkies', async () => {
           6, // z
           '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512', // childAddress
           ethers.BigNumber.from('6'), // childId
-          'ipfs://ABCD/items/flag/right.json', // childAssetMetadata
-          'ipfs://ABCD/catalog/slots/right_hand.json', // partMetadata
+          'ipfs://QmRy66YmyDFKeMyUjwUUoci1BsUAtU6LSPkPZCaZNC9F18/items/flag/right.json', // childAssetMetadata
+          'ipfs://QmRy66YmyDFKeMyUjwUUoci1BsUAtU6LSPkPZCaZNC9F18/catalog/slots/right_hand.json', // partMetadata
         ],
       ],
     ];

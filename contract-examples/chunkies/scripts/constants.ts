@@ -1,4 +1,4 @@
-const BASE_IPFS_URI = 'ipfs://ABCD'; // TODO update
+const BASE_IPFS_URI = 'ipfs://QmRy66YmyDFKeMyUjwUUoci1BsUAtU6LSPkPZCaZNC9F18';
 
 // Collection metadata
 const CHUNKY_METADATA = BASE_IPFS_URI + 'collection-metadata/chunky.json';
