@@ -1,7 +1,6 @@
 {
-    "name": "Chunkies Items",
-    "description": "Chunkies are an easily accessible uncapped collection of avatars designed to provide fast, cheap, and easy access to Skybreach even without a Kanaria as an avatar. While the world of Skybreach can be explored without owning land or avatars, it cannot be interacted with without an avatar - this is what Chunkies are for.",
-    "image": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/bone/thumb.png",
-    "externalUri": "https://skybreach.app/"
-  }
-  
+  "name": "Chunkies Items",
+  "description": "Chunkies are an easily accessible uncapped collection of avatars designed to provide fast, cheap, and easy access to Skybreach even without a Kanaria as an avatar. While the world of Skybreach can be explored without owning land or avatars, it cannot be interacted with without an avatar - this is what Chunkies are for.",
+  "image": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/bone/thumb.png",
+  "externalUri": "https://skybreach.app/"
+}

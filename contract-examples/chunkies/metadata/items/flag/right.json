@@ -1,11 +1,10 @@
 {
-    "name": "Flag",
-    "description": "Chunky Flag",
-    "externalUri": "https://skybreach.app/",
-    "external_url": "https://skybreach.app/",
-    "image": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/flag/right.svg",
-    "mediaUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/flag/right.svg",
-    "thumbnailUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/flag/thumb.png",
-    "preferThumb": true
-  }
-  
+  "name": "Flag",
+  "description": "Chunky Flag",
+  "externalUri": "https://skybreach.app/",
+  "external_url": "https://skybreach.app/",
+  "image": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/flag/right.svg",
+  "mediaUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/flag/right.svg",
+  "thumbnailUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/flag/thumb.png",
+  "preferThumb": true
+}

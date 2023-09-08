@@ -1,11 +1,10 @@
 {
-    "name": "Spear",
-    "description": "Chunky Spear",
-    "externalUri": "https://skybreach.app/",
-    "external_url": "https://skybreach.app/",
-    "image": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/spear/right.svg",
-    "mediaUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/spear/right.svg",
-    "thumbnailUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/spear/thumb.png",
-    "preferThumb": true
-  }
-  
+  "name": "Spear",
+  "description": "Chunky Spear",
+  "externalUri": "https://skybreach.app/",
+  "external_url": "https://skybreach.app/",
+  "image": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/spear/right.svg",
+  "mediaUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/spear/right.svg",
+  "thumbnailUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/spear/thumb.png",
+  "preferThumb": true
+}

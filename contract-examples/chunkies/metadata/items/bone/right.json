@@ -1,11 +1,10 @@
 {
-    "name": "Bone",
-    "description": "Chunky Bone",
-    "externalUri": "https://skybreach.app/",
-    "external_url": "https://skybreach.app/",
-    "image": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/bone/right.svg",
-    "mediaUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/bone/right.svg",
-    "thumbnailUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/bone/thumb.png",
-    "preferThumb": true
-  }
-  
+  "name": "Bone",
+  "description": "Chunky Bone",
+  "externalUri": "https://skybreach.app/",
+  "external_url": "https://skybreach.app/",
+  "image": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/bone/right.svg",
+  "mediaUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/bone/right.svg",
+  "thumbnailUri": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/items/bone/thumb.png",
+  "preferThumb": true
+}

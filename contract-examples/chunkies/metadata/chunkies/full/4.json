@@ -1,28 +1,27 @@
 {
-    "name": "Chunky #34",
-    "description": "Provides fast, cheap, and easy access to Skybreach even without a Kanaria as an avatar.",
-    "externalUri": "https://skybreach.app/",
-    "external_url": "https://skybreach.app/",
-    "image": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/chunkies/full/34.png",
-    "attributes": [
-        {
-          "label": "Head",
-          "trait_type": "Head",
-          "type": "string",
-          "value": "Pink"
-        },
-        {
-          "label": "Body",
-          "trait_type": "Head",
-          "type": "string",
-          "value": "Green"
-        },
-        {
-          "label": "Hands",
-          "trait_type": "Head",
-          "type": "string",
-          "value": "Green"
-        }
-    ]
-  }
-  
+  "name": "Chunky #34",
+  "description": "Provides fast, cheap, and easy access to Skybreach even without a Kanaria as an avatar.",
+  "externalUri": "https://skybreach.app/",
+  "external_url": "https://skybreach.app/",
+  "image": "ipfs://QmWHfjuK256s9hyTzjbVH6BvkTBP1AAwnAJANJkhzNKW8y/chunkies/full/34.png",
+  "attributes": [
+    {
+      "label": "Head",
+      "trait_type": "Head",
+      "type": "string",
+      "value": "Pink"
+    },
+    {
+      "label": "Body",
+      "trait_type": "Head",
+      "type": "string",
+      "value": "Green"
+    },
+    {
+      "label": "Hands",
+      "trait_type": "Head",
+      "type": "string",
+      "value": "Green"
+    }
+  ]
+}
