@@ -14,8 +14,9 @@ async function main() {
   console.log(`ChunkyCatalog deployed to ${catalog.address}`);
 
   const registry = await getRegistry();
-  await registry.addExternalCollection(chunkies.address, C.CHUNKY_METADATA);
-  await registry.addExternalCollection(items.address, C.CHUNKY_ITEM_METADATA);
+  let tx1 = await registry.addExternalCollection(chunkies.address, C.CHUNKY_METADATA);
+  let tx2 = await registry.addExternalCollection(items.address, C.CHUNKY_ITEM_METADATA);
+  await Promise.all([tx1.wait(), tx2.wait()]);
   console.log('Collections added to Singular Registry');
 
   await configureCatalog(catalog, items.address);

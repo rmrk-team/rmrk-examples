@@ -1,13 +1,11 @@
-const BASE_IPFS_URI = 'ipfs://QmRy66YmyDFKeMyUjwUUoci1BsUAtU6LSPkPZCaZNC9F18';
+const BASE_IPFS_URI = 'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur';
 
 // Collection metadata
-const CHUNKY_METADATA = BASE_IPFS_URI + 'collection-metadata/chunky.json';
-const CHUNKY_BACKGROUND_METADATA = BASE_IPFS_URI + 'collection-metadata/chunky-background.json';
-const CHUNKY_ITEM_METADATA = BASE_IPFS_URI + 'collection-metadata/chunky-item.json';
+const CHUNKY_METADATA = BASE_IPFS_URI + '/chunkies/collection.json';
+const CHUNKY_ITEM_METADATA = BASE_IPFS_URI + '/items/collection.json';
 
 // Catalog metadata
-const CHUNKY_CATALOG_METADATA = BASE_IPFS_URI + 'catalog/metadata.json';
-const CHUNKY_BACKGROUND_SLOT_METADATA = BASE_IPFS_URI + 'catalog/slots/background.json';
+const CHUNKY_CATALOG_METADATA = BASE_IPFS_URI + '/catalog/metadata.json';
 const CHUNKY_ITEM_LEFT_SLOT_METADATA = BASE_IPFS_URI + 'catalog/slots/item-left.json';
 const CHUNKY_ITEM_RIGHT_SLOT_METADATA = BASE_IPFS_URI + 'catalog/slots/item-right.json';
 
@@ -53,7 +51,6 @@ const CHUNKY_CHUNKY_PRERENDER_BASE_METADATA_URI = BASE_IPFS_URI + 'chunky-preren
 export {
   BASE_IPFS_URI,
   CHUNKY_METADATA,
-  CHUNKY_BACKGROUND_METADATA,
   CHUNKY_ITEM_METADATA,
   CHUNKY_CATALOG_METADATA,
   CHUNKY_V1_HEAD_FIXED_PART_ID,
@@ -79,7 +76,6 @@ export {
   EQUIPPABLE_GROUP_FOR_CHUNKIES_DEFAULT,
   EQUIPPABLE_GROUP_FOR_ITEMS_LEFT_HAND,
   EQUIPPABLE_GROUP_FOR_ITEMS_RIGHT_HAND,
-  CHUNKY_BACKGROUND_SLOT_METADATA,
   CHUNKY_ITEM_LEFT_SLOT_METADATA,
   CHUNKY_ITEM_RIGHT_SLOT_METADATA,
   CHUNKY_BACKGROUND_BASE_METADATA_URI,
