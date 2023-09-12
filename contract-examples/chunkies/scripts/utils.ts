@@ -40,6 +40,9 @@ async function deployContracts(): Promise<{
   const catalog: ChunkyCatalog = await catalogFactory.deploy(...catalogArgs);
   await catalog.deployed();
 
+  // So holders do not need to accept each item
+  await chunkies.setAutoAcceptCollection(items.address);
+
   const chainId = (await ethers.provider.getNetwork()).chainId;
   if (chainId !== 31337) {
     // Skip verification on local chain
@@ -53,7 +56,7 @@ async function deployContracts(): Promise<{
     });
     await run('verify:verify', {
       address: catalog.address,
-      contract: "contracts/ChunkyCatalog.sol:ChunkyCatalog", // Needed so hardhat can distinguish it from RMRKCatalogImpl
+      contract: 'contracts/ChunkyCatalog.sol:ChunkyCatalog', // Needed so hardhat can distinguish it from RMRKCatalogImpl
       constructorArguments: catalogArgs,
     });
   }
@@ -363,14 +366,14 @@ async function mintItems(items: ChunkyItem, chunkiesAddress: string) {
   // We are using left hand asset as tokenURI. This is the simplest path. Alternatively, we could have used a custom implementation which does not require tokenURI on mint, but gets it from the the asset with the highest priority. This can easily be created on wizard.rmrk.dev
   // We first mint it to ourselves so we can accept both assets. The implementation we are using accepts the first ever asset or any asset added by the token owner, so both will be auto accepted
   let tx = await items.mint(deployer.address, 1, `${C.BASE_IPFS_URI}/items/bone/left.json`);
-  await tx.wait()
+  await tx.wait();
   const newTokenId = await items.totalSupply();
   tx = await items.addAssetToToken(newTokenId, boneLeftAssetId, 0);
-  await tx.wait()
+  await tx.wait();
   tx = await items.addAssetToToken(newTokenId, boneRightAssetId, 0);
-  await tx.wait()
+  await tx.wait();
   tx = await items.nestTransferFrom(deployer.address, chunkiesAddress, newTokenId, 1, []);
-  await tx.wait()
+  await tx.wait();
 
   // 2nd WAY TO DO IT: Custom method on items contract
   // Sending a flag NFT to the second chunky, with 2 assets, one for each hand

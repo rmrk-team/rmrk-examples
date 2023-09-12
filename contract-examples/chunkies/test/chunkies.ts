@@ -23,7 +23,6 @@ async function fixture(): Promise<{
   const { chunkies, items, catalog } = await deployContracts();
   await configureCatalog(catalog, items.address);
   await mintChunkies(chunkies, catalog.address, deployer);
-  await chunkies.setAutoAcceptCollection(items.address);
   await addItemAssets(items, chunkies.address);
   await mintItems(items, chunkies.address);
 
