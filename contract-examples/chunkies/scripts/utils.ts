@@ -112,7 +112,7 @@ async function configureCatalog(catalog: ChunkyCatalog, itemsAddress: string) {
         itemType: C.PART_TYPE_FIXED,
         z: C.Z_INDEX_HANDS,
         equippable: [],
-        metadataURI: `${C.BASE_IPFS_URI}/catalog/fixed/v1/hands.json`,
+        metadataURI: `${C.BASE_IPFS_URI}/catalog/fixed/v1/hand.json`,
       },
     },
     {
@@ -139,7 +139,7 @@ async function configureCatalog(catalog: ChunkyCatalog, itemsAddress: string) {
         itemType: C.PART_TYPE_FIXED,
         z: C.Z_INDEX_HANDS,
         equippable: [],
-        metadataURI: `${C.BASE_IPFS_URI}/catalog/fixed/v2/hands.json`,
+        metadataURI: `${C.BASE_IPFS_URI}/catalog/fixed/v2/hand.json`,
       },
     },
     {
@@ -166,7 +166,7 @@ async function configureCatalog(catalog: ChunkyCatalog, itemsAddress: string) {
         itemType: C.PART_TYPE_FIXED,
         z: C.Z_INDEX_HANDS,
         equippable: [],
-        metadataURI: `${C.BASE_IPFS_URI}/catalog/fixed/v3/hands.json`,
+        metadataURI: `${C.BASE_IPFS_URI}/catalog/fixed/v3/hand.json`,
       },
     },
     {
@@ -193,7 +193,7 @@ async function configureCatalog(catalog: ChunkyCatalog, itemsAddress: string) {
         itemType: C.PART_TYPE_FIXED,
         z: C.Z_INDEX_HANDS,
         equippable: [],
-        metadataURI: `${C.BASE_IPFS_URI}/catalog/fixed/v4/hands.json`,
+        metadataURI: `${C.BASE_IPFS_URI}/catalog/fixed/v4/hand.json`,
       },
     },
   ]);

@@ -76,7 +76,7 @@ describe('Chunkies', async () => {
         [
           ethers.BigNumber.from('3'), // partId
           8, // z
-          'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/catalog/fixed/v1/hands.json', // metadataURI
+          'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/catalog/fixed/v1/hand.json', // metadataURI
         ],
       ],
       [
