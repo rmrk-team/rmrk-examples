@@ -29,7 +29,7 @@ async function deployContracts(): Promise<{
     500, // 5%
   ] as const;
 
-  const catalogArgs = [C.CHUNKY_CATALOG_METADATA, 'img'] as const;
+  const catalogArgs = [C.CHUNKY_CATALOG_METADATA, 'image/*'] as const;
 
   const chunkies: Chunky = await chunkyFactory.deploy(...chunkyArgs);
   await chunkies.deployed();
