@@ -87,6 +87,12 @@ const config: HardhatUserConfig = {
       chainId: 592,
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
+    bsc: {
+      url: process.env.BSC_URL || 'https://bsc-dataseed.bnbchain.org',
+      chainId: 56,
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      gasPrice: 3000000000,
+    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
@@ -108,6 +114,7 @@ const config: HardhatUserConfig = {
       polygon: process.env.POLYGONSCAN_API_KEY || '', // Polygon Etherscan API Key
       base: process.env.BASESCAN_API_KEY || '', // Base Etherscan API Key
       astar: process.env.ASTAR_BLOCKSCOUT_API_KEY || '', // Astar blockscout API Key
+      bsc: process.env.BSCSCAN_API_KEY || '', // BSC Etherscan API Key
     },
     customChains: [
       {
