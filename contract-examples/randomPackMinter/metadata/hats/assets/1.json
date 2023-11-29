@@ -1,0 +1,19 @@
+{
+    "name": "Hat Name",
+    "description": "Hat Description",
+    "externalUri": "https://myapp.app",
+    "external_url": "https://myapp.app",
+    "image": "ipfs://ABC/hats/thumb/1.png",
+    "mediaUri": "ipfs://ABC/hats/equipped/1.png",
+    "thumbnailUri": "ipfs://ABC/hats/thumb/1.png",
+    "license": "CC0",
+    "attributes": [
+        {
+            "label": "type",
+            "trait_type": "type",
+            "type": "string",
+            "value": "Hat Type"
+        }
+    ],
+    "preferThumb": true
+}

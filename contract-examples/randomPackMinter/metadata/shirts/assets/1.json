@@ -1,0 +1,19 @@
+{
+    "name": "Shirt Name",
+    "description": "Shirt Description",
+    "externalUri": "https://myapp.app",
+    "external_url": "https://myapp.app",
+    "image": "ipfs://ABC/shirts/thumb/1.png",
+    "mediaUri": "ipfs://ABC/shirts/equipped/1.png",
+    "thumbnailUri": "ipfs://ABC/shirts/thumb/1.png",
+    "license": "CC0",
+    "attributes": [
+        {
+            "label": "type",
+            "trait_type": "type",
+            "type": "string",
+            "value": "Shirt Type"
+        }
+    ],
+    "preferThumb": true
+}

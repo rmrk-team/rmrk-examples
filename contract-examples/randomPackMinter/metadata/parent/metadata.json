@@ -1,0 +1,8 @@
+{
+    "name": "Collection Name",
+    "description": "Collection Description",
+    "externalUri": "https://myapp.app",
+    "external_url": "https://myapp.app",
+    "image": "ipfs://ABC/parent/collection_thumb.gif",
+    "thumbnailUri": "ipfs://ABC/parent/collection_thumb.gif"
+}

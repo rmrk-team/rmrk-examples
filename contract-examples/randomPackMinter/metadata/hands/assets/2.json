@@ -1,0 +1,19 @@
+{
+    "name": "Hands Name",
+    "description": "Hands Description",
+    "externalUri": "https://myapp.app",
+    "external_url": "https://myapp.app",
+    "image": "ipfs://ABC/hands/thumb/2.png",
+    "mediaUri": "ipfs://ABC/hands/equipped/2.png",
+    "thumbnailUri": "ipfs://ABC/hands/thumb/2.png",
+    "license": "CC0",
+    "attributes": [
+        {
+            "label": "type",
+            "trait_type": "type",
+            "type": "string",
+            "value": "Hands Type"
+        }
+    ],
+    "preferThumb": true
+}

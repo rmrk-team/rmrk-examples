@@ -1,0 +1,19 @@
+{
+    "name": "Background Name",
+    "description": "Background Description",
+    "externalUri": "https://myapp.app",
+    "external_url": "https://myapp.app",
+    "image": "ipfs://ABC/backgrounds/thumb/2.png",
+    "mediaUri": "ipfs://ABC/backgrounds/equipped/2.png",
+    "thumbnailUri": "ipfs://ABC/backgrounds/thumb/2.png",
+    "license": "CC0",
+    "attributes": [
+        {
+            "label": "type",
+            "trait_type": "type",
+            "type": "string",
+            "value": "Background Type"
+        }
+    ],
+    "preferThumb": true
+}

@@ -1,0 +1,502 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "beneficiary",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "parent",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "backgrounds",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "glasses",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "hands",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "hats",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "shirts",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "mintPrice",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "FailedToSend",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "IncorrectOdds",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "IncorrectValueSent",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "RMRKNewContributorIsZeroAddress",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "RMRKNewOwnerIsZeroAddress",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "RMRKNotOwner",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "RMRKNotOwnerOrContributor",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "contributor",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "isContributor",
+        "type": "bool"
+      }
+    ],
+    "name": "ContributorUpdate",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "packId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "parentAssetId",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "backgroundAssetId",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "glassesAssetId",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "handsAssetId",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "hatAssetId",
+        "type": "uint64"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "shirtAssetId",
+        "type": "uint64"
+      }
+    ],
+    "name": "PackMinted",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "getAddresses",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "parent",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "backgrounds",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "glasses",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "hands",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "hats",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "shirts",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAssetods",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "parent",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "backgrounds",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "glasses",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "hands",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "hats",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "shirts",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getBeneficiary",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getMintPrice",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getPacksMinted",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getTotalAssets",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "parent",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "backgrounds",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "glasses",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "hands",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "hats",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "shirts",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "contributor",
+        "type": "address"
+      }
+    ],
+    "name": "isContributor",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "contributor",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "grantRole",
+        "type": "bool"
+      }
+    ],
+    "name": "manageContributor",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "numPacks",
+        "type": "uint256"
+      }
+    ],
+    "name": "mintPacks",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "name": "onERC721Received",
+    "outputs": [
+      {
+        "internalType": "bytes4",
+        "name": "",
+        "type": "bytes4"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "parentOdds",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "backgroundsOdds",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "glassesOdds",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "handsOdds",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "hatsOdds",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "shirtsOdds",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "setAssetOdds",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "beneficiary",
+        "type": "address"
+      }
+    ],
+    "name": "setBeneficiary",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
