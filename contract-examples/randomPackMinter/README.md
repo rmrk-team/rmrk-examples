@@ -8,11 +8,11 @@ This is a simple template to deploy a set equippable collections, with a parent 
 5. Equipping all children.
 6. Sending the parent to the buyer.
 
-If you review the deploy scripts, the constants and the generate metadata file, you should be able to add other equippables, here we simply provide a ready to use version with 5 common equippables. This is what you need to follow:
+Here we simply provide a ready to use version with a parent and 5 common equippables, but you may add or remove children by adapting the minter contract, deploy scripts, the constants and the generate metadata file. This is what you need to follow to deploy as it is.
 
 1. Install packages with `yarn` or `npm i`
-2. Copmile contracts: `yarn hardhat compile`
-3. Copy .env.example into .env and set your variables. You need `PRIVATE_KEY` and `API_KEY` to verify your contracts. You can get API_KEY easily from block scanners, please do.
+2. Compile contracts: `yarn hardhat compile`
+3. Copy `.env.example` into `.env` and set your variables. You need `PRIVATE_KEY` and `API_KEY` to verify your contracts. You can get API_KEY easily from block scanners, please do.
 4. Add your images under assets. For each collection you need:
    1. A collection banner (to later set on Singular, you can omit pinning it.)
    2. A collection thumbnail.
@@ -21,7 +21,7 @@ If you review the deploy scripts, the constants and the generate metadata file, 
    5. DO NOT CHANGE the structure nor naming and use consecutive numbers, always starting from 1!
 5. Upload all your assets to IPFS. Ideally under the same URI. If not possible, you need at least the same URI per collection.
 6. Fill the csv files under `./preprocess/input/`. There is one per collection and one for the metadata of all collections. The number of consecutives per collection must match the number of assets you added.
-7. Review and address all of the TODOs in `./preprocess/generate_metadata.py`. These include:
+7. Review and address all of the `TODO`s in `./preprocess/generate_metadata.py`. These include:
    * Setting external URI, it can be to your website or socials.
    * Set the base URI for assets, for each of the collections. From step 5.
    * Set the right extension for your assets.
@@ -30,7 +30,7 @@ If you review the deploy scripts, the constants and the generate metadata file, 
    * Set a more descriptive catalog name and description.
 8. Run generate metadata: `./preprocess/generate_metadata.py` or `python preprocess/generate_metadata.py` depending on your OS.
 9. Upload the entire metadata folder to IPFS. It must be under the same URI for the scripts to work. Alternatively you would need to edit the constants file to make it independent per collection.
-10. Review and address all of the TODOs in `./scripts/constants.ts`. These include:
+10. Review and address all of the `TODO`s in `./scripts/constants.ts`. These include:
    * Setting custom name and symbols.
    * Setting base metadata URI, from step 9.
    * Set the odds for each asset. e.g. Say you have 5 hats, you want the first 2 to be common and the other not so much, you can set priorities to: `[35, 35, 12, 12, 6]`. The latest would be the rarest.  This won't guarantee exact distribution since it is just a probability, but it actual minted numbers will be very close.

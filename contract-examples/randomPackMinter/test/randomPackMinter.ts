@@ -50,22 +50,9 @@ describe('RandomPackMinter', async () => {
   });
 
   it('can mint pack and children are equipped', async function () {
-    let tx = await minter.connect(buyer1).mintPacks(buyer1.address, 1, {
+    await minter.connect(buyer1).mintPacks(buyer1.address, 1, {
       value: ethers.utils.parseEther('0.1'),
     });
-    const receipt = await tx.wait();
-    const targetTopic = ethers.utils.id(
-      'PackMinted(address,uint256,uint64,uint64,uint64,uint64,uint64,uint64)',
-    );
-
-    for (const log of receipt.logs) {
-      if (log.topics[0] === targetTopic) {
-        console.log(log);
-        const parsedEvent = minter.interface.parseLog(log);
-        console.log(parsedEvent);
-        break;
-      }
-    }
 
     expect(await parent.balanceOf(buyer1.address)).to.equal(1);
     expect(await parent.isChildEquipped(1, backgrounds.address, 1)).to.be.true;
