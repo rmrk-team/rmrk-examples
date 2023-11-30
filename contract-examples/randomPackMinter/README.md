@@ -53,7 +53,7 @@ Here we simply provide a ready to use version with a parent and 5 common equippa
       ```
       yarn hardhat run scripts/deploy.ts --network {test-blockchain}
       ```
-   Ping us through the [implementers channel on telegram](https://t.me/rmrkimpl) so we add you to the allow list to add collections to singular in production. This must happen before you deploy to production, so the script runs smoothly and your collection is ready to be traded in singular from day 1.
+      Ping us through the [implementers channel on telegram](https://t.me/rmrkimpl) so we add you to the allow list to add collections to singular in production. This must happen before you deploy to production, so the script runs smoothly and your collection is ready to be traded in singular from day 1.
    * Finally, deploy to production:
       ```
       yarn hardhat run scripts/deploy.ts --prod-network {blockchain}
@@ -74,7 +74,7 @@ Available production networks:
 * `bsc`
       
 
-Remember to give credit to RMRK if you're using it's technology. Check the [license](LICENSE.md) and [notice](NOTICE.md) for more details.
+Remember to give credit to RMRK if you're using it's technology. Check the [license](LICENSE) and [notice](NOTICE.md) for more details.
 
 You will need to implement a UI for the minting. This repository is not focused on that, but the main interactions you might need are described next, using ethers v5. We plan to add UI examples in this same repository.
 
