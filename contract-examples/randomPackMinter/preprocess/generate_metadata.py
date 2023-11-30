@@ -51,6 +51,7 @@ def generate_asset_metadata():
                         'trait_type': 'type', # Backwards compatibility
                         'type': 'string',
                         'value': input_asset['type'],
+                        # 'display_type': 'number' | 'date' | 'boost_number' | 'boost_percentage', # Optional, applies only for numbers.Uncomment and set appropriate value if needed.
                     },
                     # TODO: You can add more attributes here, just make sure they are in the csv. You can also remove the entire attributes field if you don't want to add any.
                 ]
@@ -90,6 +91,7 @@ def generate_catalog_metadata():
         'name': 'Catalog',
         'description': 'Catalog',
         'externalUri': EXTERNAL_URI,
+        # 'image': 'PATH_TO_CATALOG_IMAGE', # TODO: Optionally set a catalog image, you can pin it together with the rest of the assets
     }
     output_path = OUTPUT_CATALOG_METADATA
     with open(output_path, 'w') as f:
