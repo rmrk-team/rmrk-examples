@@ -5,8 +5,12 @@ pragma solidity ^0.8.21;
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@rmrk-team/evm-contracts/contracts/implementations/abstract/RMRKAbstractEquippable.sol";
 
+error NotMinter();
+
 contract Child is RMRKAbstractEquippable {
     using Strings for uint256;
+
+    address private _minter;
 
     constructor(
         string memory name,
@@ -27,18 +31,31 @@ contract Child is RMRKAbstractEquippable {
     {}
 
     /**
+     * @notice Used to set the minter.
+     * @dev Can only be called by the owner.
+     * @param minter Address of the minter
+     */
+    function setMinter(address minter) external onlyOwner {
+        _minter = minter;
+    }
+
+    /**
      * @notice Used to mint a one child token to a given parent token.
      * @dev The "data" value of the "_safeMint" method is set to an empty value.
+     * @dev Can only be called by the minter.
      * @param to Address of the collection smart contract of the token into which to mint the child token
      * @param destinationId ID of the token into which to mint the new child token
      * @param assetId ID of the asset to add to the token
-     * @return The ID of the first token to be minted in the current minting cycle
+     * @return The ID of the minted token
      */
     function nestMint(
         address to,
         uint256 destinationId,
         uint64 assetId
-    ) public onlyOwnerOrContributor returns (uint256) {
+    ) public returns (uint256) {
+        if (_minter != msg.sender) {
+            revert NotMinter();
+        }
         (uint256 nextToken, ) = _prepareMint(1);
         _nestMint(to, nextToken, destinationId, "");
         _addAssetToToken(nextToken, assetId, 0);

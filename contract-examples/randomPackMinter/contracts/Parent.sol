@@ -5,11 +5,14 @@ pragma solidity ^0.8.21;
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@rmrk-team/evm-contracts/contracts/implementations/abstract/RMRKAbstractEquippable.sol";
 
+error NotMinter();
+
 contract Parent is RMRKAbstractEquippable {
     using Strings for uint256;
 
     // Variables
     mapping(address => bool) private _autoAcceptCollection;
+    address private _minter;
 
     // Constructor
     constructor(
@@ -30,19 +33,28 @@ contract Parent is RMRKAbstractEquippable {
         )
     {}
 
+    /**
+     * @notice Used to set the minter.
+     * @dev Can only be called by the owner.
+     * @param minter Address of the minter
+     */
+    function setMinter(address minter) external onlyOwner {
+        _minter = minter;
+    }
+
     // Suggested Mint Functions
     /**
      * @notice Used to mint the desired number of tokens to the specified address.
      * @dev The data value of the _safeMint method is set to an empty value.
-     * @dev Can only be called while the open sale is open.
+     * @dev Can only be called by the minter.
      * @param to Address to which to mint the token
      * @param assetId ID of the asset to add to the token
-     * @return The ID of the first token to be minted in the current minting cycle
+     * @return The ID of the minted token
      */
-    function mint(
-        address to,
-        uint64 assetId
-    ) public onlyOwnerOrContributor returns (uint256) {
+    function mint(address to, uint64 assetId) public returns (uint256) {
+        if (_minter != msg.sender) {
+            revert NotMinter();
+        }
         (uint256 nextToken, ) = _prepareMint(1);
 
         _safeMint(to, nextToken, "");

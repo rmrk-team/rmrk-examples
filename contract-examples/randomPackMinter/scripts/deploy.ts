@@ -116,10 +116,10 @@ async function deployContracts(): Promise<{
   );
   await tx.wait();
 
-  // Delay 20s
-  await new Promise((r) => setTimeout(r, 20000));
-
   if (network.name !== 'hardhat') {
+    // Delay 20s
+    await new Promise((r) => setTimeout(r, 20000));
+
     await run('verify:verify', {
       address: parent.address,
       constructorArguments: parentArgs,
@@ -159,19 +159,19 @@ async function configureRelationships(
   shirts: Child,
   minter: RandomPackMinter,
 ) {
-  let tx = await parent.manageContributor(minter.address, true);
+  let tx = await parent.setMinter(minter.address);
   await tx.wait();
-  tx = await backgrounds.manageContributor(minter.address, true);
+  tx = await backgrounds.setMinter(minter.address);
   await tx.wait();
-  tx = await glasses.manageContributor(minter.address, true);
+  tx = await glasses.setMinter(minter.address);
   await tx.wait();
-  tx = await hands.manageContributor(minter.address, true);
+  tx = await hands.setMinter(minter.address);
   await tx.wait();
-  tx = await hats.manageContributor(minter.address, true);
+  tx = await hats.setMinter(minter.address);
   await tx.wait();
-  tx = await shirts.manageContributor(minter.address, true);
+  tx = await shirts.setMinter(minter.address);
   await tx.wait();
-  console.log('Mintor added as contributor to all collections');
+  console.log('Mintor set in all collections');
 
   tx = await parent.setAutoAcceptCollection(backgrounds.address, true);
   await tx.wait();

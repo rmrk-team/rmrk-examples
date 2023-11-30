@@ -72,7 +72,7 @@ contract RandomPackMinter is Ownable, IERC721Receiver {
         address,
         uint256,
         bytes calldata
-    ) external returns (bytes4) {
+    ) external pure returns (bytes4) {
         return this.onERC721Received.selector;
     }
 
@@ -296,7 +296,7 @@ contract RandomPackMinter is Ownable, IERC721Receiver {
     function _getAssetFromSeed(
         uint256[] memory odds,
         uint256 seed
-    ) private view returns (uint64) {
+    ) private pure returns (uint64) {
         uint256 totalOdds;
         uint256 modSeed = seed % 100;
         for (uint256 i; i < odds.length; ) {
