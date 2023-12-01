@@ -1,8 +1,8 @@
 {
-    "name": "Collection Name",
-    "description": "Collection Description",
-    "externalUri": "https://myapp.app",
-    "external_url": "https://myapp.app",
-    "image": "ipfs://ABC/backgrounds/collection_thumb.gif",
-    "thumbnailUri": "ipfs://ABC/backgrounds/collection_thumb.gif"
+  "name": "Collection Name",
+  "description": "Collection Description",
+  "externalUri": "https://myapp.app",
+  "external_url": "https://myapp.app",
+  "image": "ipfs://ABC/backgrounds/collection_thumb.gif",
+  "thumbnailUri": "ipfs://ABC/backgrounds/collection_thumb.gif"
 }
