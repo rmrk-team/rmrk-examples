@@ -48,6 +48,12 @@ const config: HardhatUserConfig = {
       url: process.env.SHIBUYA_URL || 'https://evm.shibuya.astar.network',
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
+    zkatana: {
+      chainId: 1261120,
+      url: process.env.ZKATANA_URL || 'https://rpc.startale.com/zkatana',
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      gasPrice: 650000000,
+    },
     moonriver: {
       url: process.env.MOONRIVER_URL || 'https://rpc.api.moonriver.moonbeam.network',
       chainId: 1285,
@@ -140,6 +146,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: 'https://blockscout.com/astar/api',
           browserURL: 'https://blockscout.com/astar/',
+        },
+      },
+      {
+        network: 'zkatana',
+        chainId: 1261120,
+        urls: {
+          apiURL: 'https://zkatana.blockscout.com/api',
+          browserURL: 'https://zkatana.blockscout.com',
         },
       },
     ],

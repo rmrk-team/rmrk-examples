@@ -1,7 +1,5 @@
 import { ethers, network } from 'hardhat';
 import { getContracts } from './getContracts';
-import { BigNumber } from 'ethers';
-import { Kingdom, Army, Soldier } from '../typechain-types';
 
 async function main(): Promise<void> {
   console.log(`Running kingdom journey on ${network.name} blockchain...`);
@@ -15,10 +13,10 @@ async function main(): Promise<void> {
   console.log(`Using Army deployed at ${army.address}`);
   console.log(`Using Soldier deployed at ${soldier.address}`);
 
+  // Journey starts here:
+
   const kingdom1Id = 1;
   const kingdom2Id = 2;
-
-  // Journey starts here:
 
   // 1. Minting the kingdoms
   let tx = await kingdom.mint(
