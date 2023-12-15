@@ -1,0 +1,15 @@
+{
+    "image": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/8-buddha-bowl.jpg",
+    "mediaUri": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/8-buddha-bowl.jpg",
+    "attributes":
+    [
+        {
+            "label": "Level",
+            "type": "string",
+            "value": "Medium",
+            "trait_type": "Level"
+        }
+    ],
+    "name": "Vegan Buddha Bowl",
+    "description": "The recipe includes a nutritious bowl filled with quinoa, roasted vegetables like sweet potatoes and broccoli, spinach, avocado, and a tahini sauce drizzle. The instructions provide guidance on roasting the vegetables and assembling the bowl."
+}

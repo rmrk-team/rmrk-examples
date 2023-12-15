@@ -1,0 +1,15 @@
+{
+    "image": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/6-chicken-tikka.jpg",
+    "mediaUri": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/6-chicken-tikka.jpg",
+    "attributes":
+    [
+        {
+            "label": "Level",
+            "type": "string",
+            "value": "Advanced",
+            "trait_type": "Level"
+        }
+    ],
+    "name": "Chicken Tikka Masala",
+    "description": "The recipe depicts a colorful and aromatic dish with tender chicken pieces in a rich, spicy tomato-based sauce, accompanied by instructions for marinating and cooking the chicken and preparing the sauce."
+}

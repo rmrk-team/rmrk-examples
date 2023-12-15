@@ -1,0 +1,15 @@
+{
+    "image": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/1-carbonara.jpg",
+    "mediaUri": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/1-carbonara.jpg",
+    "attributes":
+    [
+        {
+            "label": "Level",
+            "type": "string",
+            "value": "Easy",
+            "trait_type": "Level"
+        }
+    ],
+    "name": "Spaghetti Carbonara",
+    "description": "The recipe features creamy pasta with crisp bacon bits, grated Parmesan, and parsley, accompanied by clear, easy-to-follow instructions."
+}

@@ -1,0 +1,15 @@
+{
+    "image": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/2-cesar-salad.jpg",
+    "mediaUri": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/2-cesar-salad.jpg",
+    "attributes":
+    [
+        {
+            "label": "Level",
+            "type": "string",
+            "value": "Easy",
+            "trait_type": "Level"
+        }
+    ],
+    "name": "Caesar Salad",
+    "description": "The recipe showcases a salad with crisp romaine lettuce, crunchy croutons, shaved Parmesan cheese, and a creamy dressing, accompanied by step-by-step instructions and tips for making the perfect homemade dressing."
+}

@@ -1,0 +1,15 @@
+{
+    "image": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/3-grilled-salmon.jpg",
+    "mediaUri": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/3-grilled-salmon.jpg",
+    "attributes":
+    [
+        {
+            "label": "Level",
+            "type": "string",
+            "value": "Easy",
+            "trait_type": "Level"
+        }
+    ],
+    "name": "Grilled Salmon",
+    "description": "The recipe features a photo of a golden-brown grilled salmon fillet, along with instructions that include seasoning techniques and grilling tips to achieve the perfect texture."
+}

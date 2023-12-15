@@ -1,0 +1,15 @@
+{
+    "image": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/4-stir-fry.jpg",
+    "mediaUri": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/4-stir-fry.jpg",
+    "attributes":
+    [
+        {
+            "label": "Level",
+            "type": "string",
+            "value": "Medium",
+            "trait_type": "Level"
+        }
+    ],
+    "name": "Beef Stir-Fry",
+    "description": "The recipe features succulent beef slices and colorful vegetables like bell peppers and broccoli, stir-fried to perfection. The instructions include tips on marinating the beef and achieving a balanced flavor."
+}

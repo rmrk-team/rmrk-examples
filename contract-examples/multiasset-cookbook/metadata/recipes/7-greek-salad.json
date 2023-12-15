@@ -1,0 +1,15 @@
+{
+    "image": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/7-greek-salad.jpg",
+    "mediaUri": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/7-greek-salad.jpg",
+    "attributes":
+    [
+        {
+            "label": "Level",
+            "type": "string",
+            "value": "Easy",
+            "trait_type": "Level"
+        }
+    ],
+    "name": "Greek Salad",
+    "description": "The recipe features a fresh salad with ripe tomatoes, cucumbers, onions, kalamata olives, and feta cheese, along with instructions on selecting fresh ingredients and making the ideal dressing."
+}

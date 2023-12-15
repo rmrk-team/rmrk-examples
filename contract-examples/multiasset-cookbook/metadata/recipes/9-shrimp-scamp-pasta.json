@@ -1,0 +1,15 @@
+{
+    "image": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/9-shrimp-scamp-pasta.jpg",
+    "mediaUri": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/9-shrimp-scamp-pasta.jpg",
+    "attributes":
+    [
+        {
+            "label": "Level",
+            "type": "string",
+            "value": "Medium",
+            "trait_type": "Level"
+        }
+    ],
+    "name": "Shrimp Scampi Pasta",
+    "description": "The recipe depicts spaghetti in a garlicky, lemony, buttery sauce, topped with grilled shrimp. Instructions detail how to cook the shrimp and prepare the sauce."
+}

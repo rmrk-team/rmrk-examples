@@ -1,0 +1,15 @@
+{
+    "image": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/5-chocolate-cake.jpg",
+    "mediaUri": "ipfs://QmbMVTLrUb3CSW4Cytj8Nrv4VT72eGEcA57FpPtQgC2PRa/5-chocolate-cake.jpg",
+    "attributes":
+    [
+        {
+            "label": "Level",
+            "type": "string",
+            "value": "Advanced",
+            "trait_type": "Level"
+        }
+    ],
+    "name": "Chocolate Cake",
+    "description": "The recipe includes a rich, moist chocolate cake with glossy chocolate frosting, accompanied by detailed baking instructions and frosting preparation."
+}

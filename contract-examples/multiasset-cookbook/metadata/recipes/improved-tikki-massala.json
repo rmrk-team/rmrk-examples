@@ -1,0 +1,15 @@
+{
+    "image": "ipfs://QmXLYY1thrPi3qPJWiW1NzEmBrjMF8VVrojDDNzNFWjsQR",
+    "mediaUri": "ipfs://QmXLYY1thrPi3qPJWiW1NzEmBrjMF8VVrojDDNzNFWjsQR",
+    "attributes":
+    [
+        {
+            "label": "Level",
+            "type": "string",
+            "value": "Advanced",
+            "trait_type": "Level"
+        }
+    ],
+    "name": "Chicken Tikka Masala",
+    "description": "The improved recipe for Chicken Tikka Masala features tender chicken pieces in a richer, creamier tomato-based sauce, enhanced with aromatic spices like cardamom and fenugreek. The recipe introduces a special marination technique using yogurt and a mix of spices, imparting deeper flavors to the chicken."
+}
