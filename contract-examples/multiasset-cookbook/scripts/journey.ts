@@ -9,7 +9,7 @@ async function main(): Promise<void> {
   console.log(`Deploying contracts with the account: ${alice.address}`);
 
   const cookbook = await getCookbook();
-  console.log(`Using Cookbook deployed at ${cookbook.address}.`);
+  console.log(`Using Cookbook deployed at ${await cookbook.getAddress()}.`);
 
   // Journey starts here
 
@@ -38,8 +38,8 @@ async function main(): Promise<void> {
   console.log(`Added ${assets.length} assets to the collection`);
 
   // 3. Recipes creation - Adding assets to a token
-  const assetIds = [1, 2, 3];
-  const masterCookbookId = 1;
+  const masterCookbookId = 1; // We know this because it is the second minted token, in a production environment you would get it from the emitted Transfer event, since there might be other tokens minted in between.
+  const assetIds = [1, 2, 3]; // Similarly, in production you would read the AssetAddedToTokens event to get the asset ids.
   for (const assetId of assetIds) {
     tx = await cookbook.connect(master).addAssetToToken(masterCookbookId, assetId, 0);
     await tx.wait();

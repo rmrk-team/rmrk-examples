@@ -77,7 +77,7 @@ export const HANDS_Z_INDEX = 10;
 export const MAX_SUPPLY = 10000;
 export const BENEFICIARY = ''; // Leave empty to set to deployer address
 export const ROYALTIES_BPS = 1000; // 10%
-export const MINT_PRICE = ethers.utils.parseEther('0.1');
+export const MINT_PRICE = ethers.parseEther('0.1');
 
 // PART TYPES (Defined by standard)
 export const PART_TYPE_SLOT = 1;

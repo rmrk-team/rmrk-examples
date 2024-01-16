@@ -10,31 +10,43 @@ async function main() {
   const { parent, backgrounds, glasses, hands, hats, shirts, minter, catalog } =
     await deployContracts();
 
-  console.log(`Parent: ${parent.address}`);
-  console.log(`Backgrounds: ${backgrounds.address}`);
-  console.log(`Glasses: ${glasses.address}`);
-  console.log(`Hands: ${hands.address}`);
-  console.log(`Hats: ${hats.address}`);
-  console.log(`Shirts: ${shirts.address}`);
-  console.log(`RandomPackMinter: ${minter.address}`);
+  console.log(`Parent: ${await parent.getAddress()}`);
+  console.log(`Backgrounds: ${await backgrounds.getAddress()}`);
+  console.log(`Glasses: ${await glasses.getAddress()}`);
+  console.log(`Hands: ${await hands.getAddress()}`);
+  console.log(`Hats: ${await hats.getAddress()}`);
+  console.log(`Shirts: ${await shirts.getAddress()}`);
+  console.log(`RandomPackMinter: ${await minter.getAddress()}`);
 
   // Only do on testing, or if whitelisted for production
   if (network.name !== 'hardhat') {
     const registry = await getRegistry();
-    let tx = await registry.addExternalCollection(parent.address, C.PARENT_COLLECTION_METADATA);
+    let tx = await registry.addExternalCollection(
+      await parent.getAddress(),
+      C.PARENT_COLLECTION_METADATA,
+    );
     await tx.wait();
     tx = await registry.addExternalCollection(
-      backgrounds.address,
+      await backgrounds.getAddress(),
       C.BACKGROUNDS_COLLECTION_METADATA,
     );
     await tx.wait();
-    tx = await registry.addExternalCollection(glasses.address, C.GLASSES_COLLECTION_METADATA);
+    tx = await registry.addExternalCollection(
+      await glasses.getAddress(),
+      C.GLASSES_COLLECTION_METADATA,
+    );
     await tx.wait();
-    tx = await registry.addExternalCollection(hands.address, C.HANDS_COLLECTION_METADATA);
+    tx = await registry.addExternalCollection(
+      await hands.getAddress(),
+      C.HANDS_COLLECTION_METADATA,
+    );
     await tx.wait();
-    tx = await registry.addExternalCollection(hats.address, C.HATS_COLLECTION_METADATA);
+    tx = await registry.addExternalCollection(await hats.getAddress(), C.HATS_COLLECTION_METADATA);
     await tx.wait();
-    tx = await registry.addExternalCollection(shirts.address, C.SHIRTS_COLLECTION_METADATA);
+    tx = await registry.addExternalCollection(
+      await shirts.getAddress(),
+      C.SHIRTS_COLLECTION_METADATA,
+    );
     await tx.wait();
     console.log('Collections added to registry');
   }
@@ -48,12 +60,12 @@ async function main() {
   await addAssets(parent, backgrounds, glasses, hands, hats, shirts, catalog);
   console.log('Assets added');
 
-  const gasEstimation = await minter.estimateGas.mintPacks(deployer.address, 1, {
-    value: ethers.utils.parseEther('0.1'),
+  const gasEstimation = await minter.mintPacks.estimateGas(await deployer.getAddress(), 1, {
+    value: ethers.parseEther('0.1'),
   });
-  const maxGas = gasEstimation.mul(110).div(100);
-  let t = await minter.mintPacks(deployer.address, 1, {
-    value: ethers.utils.parseEther('0.1'),
+  const maxGas = (gasEstimation * 110n) / 100n;
+  let t = await minter.mintPacks(await deployer.getAddress(), 1, {
+    value: ethers.parseEther('0.1'),
     gasLimit: maxGas,
   });
   await t.wait();

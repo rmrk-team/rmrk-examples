@@ -1,6 +1,5 @@
 import { ethers } from 'hardhat';
 import { expect } from 'chai';
-import { BigNumber } from 'ethers';
 import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
 import { Chunky, ChunkyCatalog, ChunkyItem, RMRKEquipRenderUtils } from '../typechain-types';
 import * as C from '../scripts/constants';
@@ -21,10 +20,10 @@ async function fixture(): Promise<{
   const [deployer] = await ethers.getSigners();
 
   const { chunkies, items, catalog } = await deployContracts();
-  await configureCatalog(catalog, items.address);
-  await mintChunkies(chunkies, catalog.address, deployer);
-  await addItemAssets(items, chunkies.address);
-  await mintItems(items, chunkies.address);
+  await configureCatalog(catalog, await items.getAddress());
+  await mintChunkies(chunkies, await catalog.getAddress(), deployer);
+  await addItemAssets(items, await chunkies.getAddress());
+  await mintItems(items, await chunkies.getAddress());
 
   const renderUtilsFactory = await ethers.getContractFactory('RMRKEquipRenderUtils');
   const renderUtils = await renderUtilsFactory.deploy();
@@ -59,48 +58,48 @@ describe('Chunkies', async () => {
 
     const expectedComposed = [
       'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/chunkies/full/1.json', // metadataURI
-      ethers.BigNumber.from('1'), // equippableGroupId
+      1n, // equippableGroupId
       '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0', // catalogAddress
       [
         // Fixed parts
         [
-          ethers.BigNumber.from('1'), // partId
-          4, // z
+          1n, // partId
+          4n, // z
           'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/catalog/fixed/v1/head.json', // metadataURI
         ],
         [
-          ethers.BigNumber.from('2'), // partId
-          2, // z
+          2n, // partId
+          2n, // z
           'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/catalog/fixed/v1/body.json', // metadataURI
         ],
         [
-          ethers.BigNumber.from('3'), // partId
-          8, // z
+          3n, // partId
+          8n, // z
           'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/catalog/fixed/v1/hand.json', // metadataURI
         ],
       ],
       [
         // Slot parts
         [
-          ethers.BigNumber.from('1001'), // partId
-          ethers.BigNumber.from('1'), // childAssetId
-          6, // z
+          1001n, // partId
+          1n, // childAssetId
+          6n, // z
           '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512', // childAddress
-          ethers.BigNumber.from('1'), // childId
+          1n, // childId
           'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/items/bone/left.json', // childAssetMetadata
           'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/catalog/slots/left_hand.json', // partMetadata
         ],
         [
-          ethers.BigNumber.from('1002'), // partId
-          ethers.BigNumber.from('4'), // childAssetId
-          6, // z
+          1002n, // partId
+          4n, // childAssetId
+          6n, // z
           '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512', // childAddress
-          ethers.BigNumber.from('6'), // childId
+          6n, // childId
           'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/items/flag/right.json', // childAssetMetadata
           'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/catalog/slots/right_hand.json', // partMetadata
         ],
       ],
     ];
-    expect(await renderUtils.composeEquippables(chunkies.address, 1, 1)).to.eql(expectedComposed);
+    expect(await renderUtils.composeEquippables(await chunkies.getAddress(), 1, 1)).to.eql(expectedComposed);
   });
 });

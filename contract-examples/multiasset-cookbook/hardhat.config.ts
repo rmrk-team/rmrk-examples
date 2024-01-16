@@ -1,17 +1,12 @@
 import * as dotenv from 'dotenv';
 import { HardhatUserConfig } from 'hardhat/config';
+import '@nomicfoundation/hardhat-ethers';
 import '@nomicfoundation/hardhat-toolbox';
-import '@typechain/hardhat';
-import 'hardhat-gas-reporter';
-import 'solidity-coverage';
 import 'hardhat-contract-sizer';
 
 dotenv.config();
 
-const accounts =
-  process.env.PRIVATE_KEY_MASTER !== undefined && process.env.PRIVATE_KEY_ALICE
-    ? [process.env.PRIVATE_KEY_MASTER, process.env.PRIVATE_KEY_ALICE]
-    : [];
+const accounts = process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [];
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -48,16 +43,16 @@ const config: HardhatUserConfig = {
       accounts: accounts,
       gasPrice: 2000000000,
     },
+    baseSepolia: {
+      chainId: 84532,
+      url: process.env.BASE_SEPOLIA_URL || 'https://sepolia.base.org',
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      gasPrice: 900000000,
+    },
     shibuya: {
       chainId: 81,
       url: process.env.SHIBUYA_URL || 'https://evm.shibuya.astar.network',
       accounts: accounts,
-    },
-    zkatana: {
-      chainId: 1261120,
-      url: process.env.ZKATANA_URL || 'https://rpc.startale.com/zkatana',
-      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-      gasPrice: 650000000,
     },
     moonriver: {
       url: process.env.MOONRIVER_URL || 'https://rpc.api.moonriver.moonbeam.network',
@@ -110,7 +105,8 @@ const config: HardhatUserConfig = {
       sepolia: process.env.ETHERSCAN_API_KEY || '', // Sepolia Etherscan API Key
       polygonMumbai: process.env.POLYGONSCAN_API_KEY || '', // Polygon Mumbai Etherscan API Key
       baseGoerli: process.env.BASESCAN_API_KEY || '', // Base Goerli Etherscan API Key
-      shibuya: process.env.SHIBUYA_BLOCKSCOUT_API_KEY || '', // Shibuya blockscout API Key
+      baseSepolia: process.env.BASESCAN_API_KEY || '', // Base Goerli Etherscan API Key
+      shibuya: process.env.SHIBUYA_BLOCKSCOUT_API_KEY || '', // Shibuya blockscout API KeyT
       zkatana: process.env.ZKATANA_BLOCKSCOUT_API_KEY || '', // ZKatana blockscout API Key
       moonriver: process.env.MOONSCAN_APIKEY || '', // Moonriver Moonscan API Key
       moonbeam: process.env.MOONSCAN_APIKEY || '', // Moonbeam Moonscan API Key
@@ -127,6 +123,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: 'https://api-goerli.basescan.org/api',
           browserURL: 'https://goerli.basescan.org',
+        },
+      },
+      {
+        network: 'baseSepolia',
+        chainId: 84532,
+        urls: {
+          apiURL: 'https://api-sepolia.basescan.org/api',
+          browserURL: 'https://sepolia.basescan.org',
         },
       },
       {
@@ -151,14 +155,6 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: 'https://blockscout.com/astar/api',
           browserURL: 'https://blockscout.com/astar/',
-        },
-      },
-      {
-        network: 'zkatana',
-        chainId: 1261120,
-        urls: {
-          apiURL: 'https://zkatana.blockscout.com/api',
-          browserURL: 'https://zkatana.blockscout.com',
         },
       },
     ],

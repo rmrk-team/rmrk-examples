@@ -8,7 +8,7 @@ import {
   addAssets,
   configureCatalog,
 } from '../scripts/deploy';
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
+import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/signers';
 
 async function fixture(): Promise<{
   parent: Parent;
@@ -51,14 +51,14 @@ describe('RandomPackMinter', async () => {
 
   it('can mint pack and children are equipped', async function () {
     await minter.connect(buyer1).mintPacks(buyer1.address, 1, {
-      value: ethers.utils.parseEther('0.1'),
+      value: ethers.parseEther('0.1'),
     });
 
     expect(await parent.balanceOf(buyer1.address)).to.equal(1);
-    expect(await parent.isChildEquipped(1, backgrounds.address, 1)).to.be.true;
-    expect(await parent.isChildEquipped(1, glasses.address, 1)).to.be.true;
-    expect(await parent.isChildEquipped(1, hands.address, 1)).to.be.true;
-    expect(await parent.isChildEquipped(1, hats.address, 1)).to.be.true;
-    expect(await parent.isChildEquipped(1, shirts.address, 1)).to.be.true;
+    expect(await parent.isChildEquipped(1, await backgrounds.getAddress(), 1)).to.be.true;
+    expect(await parent.isChildEquipped(1, await glasses.getAddress(), 1)).to.be.true;
+    expect(await parent.isChildEquipped(1, await hands.getAddress(), 1)).to.be.true;
+    expect(await parent.isChildEquipped(1, await hats.getAddress(), 1)).to.be.true;
+    expect(await parent.isChildEquipped(1, await shirts.getAddress(), 1)).to.be.true;
   });
 });

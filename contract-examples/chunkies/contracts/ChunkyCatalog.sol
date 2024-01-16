@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
-pragma solidity ^0.8.16;
+pragma solidity ^0.8.21;
 
-import "@rmrk-team/evm-contracts/contracts/implementations/RMRKCatalogImpl.sol";
+import {RMRKCatalogImpl} from "@rmrk-team/evm-contracts/contracts/implementations/RMRKCatalogImpl.sol";
 // Import just so typechain catches it and we can use it on tests:
-import "@rmrk-team/evm-contracts/contracts/RMRK/utils/RMRKEquipRenderUtils.sol";
+import {RMRKEquipRenderUtils} from "@rmrk-team/evm-contracts/contracts/RMRK/utils/RMRKEquipRenderUtils.sol";
 
 contract ChunkyCatalog is RMRKCatalogImpl {
     constructor(

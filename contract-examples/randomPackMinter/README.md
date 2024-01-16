@@ -89,7 +89,7 @@ import { ethers } from "ethers"
 import { minterABI } from "./RandomPackMinterABI"
 
 const minterAddress = "0x1234567890123456789012345678901234567890" // You get this from the deploy script
-const numPacks = 1 // Take this from user input
+const numPacks = 1n // Take this from user input
 const provider = new ethers.providers.JsonRpcProvider("{YOUR_RPC_URL}") // You may also get provider from your framework, or user's wallet
 const signer = provider.getSigner() // You may also get signer from your framework, or user's wallet
 
@@ -102,7 +102,7 @@ const packPrice = await minter.getMintPrice()
 // To mint:
 const tx = await minter
   .connect(signer)
-  .mintPacks(signer.address, numPacks, { value: packPrice.mul(numPacks) })
+  .mintPacks(signer.address, numPacks, { value: packPrice * numPacks })
 const receipt = await tx.wait()
 
 // This is the simplest way to detect the pack Id. Using frameworks may give you a more convenient way to do it.

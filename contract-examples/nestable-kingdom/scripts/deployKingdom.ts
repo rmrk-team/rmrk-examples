@@ -1,45 +1,41 @@
 import { ethers, run, network } from 'hardhat';
-import { BigNumber } from 'ethers';
 import { Kingdom } from '../typechain-types';
 import { getRegistry } from './getRegistry';
-
 
 async function main() {
   await deployContracts();
 }
 
-async function deployContracts(): Promise<void> {
+export default async function deployContracts(): Promise<Kingdom> {
   console.log(`Deploying Kingdom to ${network.name} blockchain...`);
 
-  const contractFactory = await ethers.getContractFactory("Kingdom");
+  const contractFactory = await ethers.getContractFactory('Kingdom');
   const args = [
-    "ipfs://QmQhDyuSvd49pxe5v2KnmvWT39TFyoqEQyBkhjYC7imHUs/kingdom/collection.json",
-    BigNumber.from(1000),
+    'ipfs://QmQhDyuSvd49pxe5v2KnmvWT39TFyoqEQyBkhjYC7imHUs/kingdom/collection.json',
+    1000n,
     (await ethers.getSigners())[0].address,
     300,
   ] as const;
-  
+
   const contract: Kingdom = await contractFactory.deploy(...args);
-  await contract.deployed();
-  console.log(`Kingdom deployed to ${contract.address}.`);
+  await contract.waitForDeployment();
+  console.log(`Kingdom deployed to ${await contract.getAddress()}.`);
 
-  // Only do on testing, or if whitelisted for production
-  const registry = await getRegistry();
-  await registry.addExternalCollection(contract.address, args[0]);
-  console.log('Collection added to Singular Registry');
+  if ((await ethers.provider.getNetwork()).name !== 'hardhat') {
+    // Only do on testing, or if whitelisted for production
+    const registry = await getRegistry();
+    await registry.addExternalCollection(await contract.getAddress(), args[0]);
+    console.log('Collection added to Singular Registry');
 
-  const chainId = (await ethers.provider.getNetwork()).chainId;
-  if (chainId === 31337) {
-    console.log('Skipping verify on local chain');
-    return;
+    console.log('Waiting 10 seconds before verifying contract...');
+    await new Promise((resolve) => setTimeout(resolve, 10000));
+    await run('verify:verify', {
+      address: await contract.getAddress(),
+      constructorArguments: args,
+      contract: 'contracts/Kingdom.sol:Kingdom',
+    });
   }
-
-  await run('verify:verify', {
-    address: contract.address,
-    constructorArguments: args,
-    contract: 'contracts/Kingdom.sol:Kingdom',
-  });
-
+  return contract;
 }
 
 main().catch((error) => {

@@ -1,45 +1,41 @@
 import { ethers, run, network } from 'hardhat';
-import { BigNumber } from 'ethers';
 import { Army } from '../typechain-types';
 import { getRegistry } from './getRegistry';
-
 
 async function main() {
   await deployContracts();
 }
 
-async function deployContracts(): Promise<void> {
+export default async function deployContracts(): Promise<Army> {
   console.log(`Deploying Army to ${network.name} blockchain...`);
 
-  const contractFactory = await ethers.getContractFactory("Army");
+  const contractFactory = await ethers.getContractFactory('Army');
   const args = [
-    "ipfs://Qma8tB38iAiqFAJpwz55d7sRQx4q7zZq1gzXkkK9wjehCg/collection.json",
-    BigNumber.from(1000),
+    'ipfs://Qma8tB38iAiqFAJpwz55d7sRQx4q7zZq1gzXkkK9wjehCg/collection.json',
+    1000n,
     (await ethers.getSigners())[0].address,
     300,
   ] as const;
-  
+
   const contract: Army = await contractFactory.deploy(...args);
-  await contract.deployed();
-  console.log(`Army deployed to ${contract.address}.`);
+  await contract.waitForDeployment();
+  console.log(`Army deployed to ${await contract.getAddress()}.`);
 
-  // Only do on testing, or if whitelisted for production
-  const registry = await getRegistry();
-  await registry.addExternalCollection(contract.address, args[0]);
-  console.log('Collection added to Singular Registry');
+  if ((await ethers.provider.getNetwork()).name !== 'hardhat') {
+    // Only do on testing, or if whitelisted for production
+    const registry = await getRegistry();
+    await registry.addExternalCollection(await contract.getAddress(), args[0]);
+    console.log('Collection added to Singular Registry');
 
-  const chainId = (await ethers.provider.getNetwork()).chainId;
-  if (chainId === 31337) {
-    console.log('Skipping verify on local chain');
-    return;
+    console.log('Waiting 10 seconds before verifying contract...');
+    await new Promise((resolve) => setTimeout(resolve, 10000));
+    await run('verify:verify', {
+      address: await contract.getAddress(),
+      constructorArguments: args,
+      contract: 'contracts/Army.sol:Army',
+    });
   }
-
-  await run('verify:verify', {
-    address: contract.address,
-    constructorArguments: args,
-    contract: 'contracts/Army.sol:Army',
-  });
-
+  return contract;
 }
 
 main().catch((error) => {

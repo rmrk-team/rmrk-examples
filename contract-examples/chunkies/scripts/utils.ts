@@ -1,8 +1,7 @@
 import { ethers, run } from 'hardhat';
-import { BigNumber } from 'ethers';
 import { Chunky, ChunkyItem, ChunkyCatalog } from '../typechain-types';
 import * as C from './constants';
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
+import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/signers';
 
 async function deployContracts(): Promise<{
   chunkies: Chunky;
@@ -17,14 +16,14 @@ async function deployContracts(): Promise<{
 
   const chunkyArgs = [
     C.CHUNKY_METADATA,
-    BigNumber.from(100),
+    100n,
     deployerAddress,
     500, // 5%
   ] as const;
 
   const itemArgs = [
     C.CHUNKY_ITEM_METADATA,
-    BigNumber.from(200),
+    200n,
     deployerAddress,
     500, // 5%
   ] as const;
@@ -32,30 +31,30 @@ async function deployContracts(): Promise<{
   const catalogArgs = [C.CHUNKY_CATALOG_METADATA, 'image/*'] as const;
 
   const chunkies: Chunky = await chunkyFactory.deploy(...chunkyArgs);
-  await chunkies.deployed();
+  await chunkies.waitForDeployment();
 
   const items: ChunkyItem = await itemFactory.deploy(...itemArgs);
-  await items.deployed();
+  await items.waitForDeployment();
 
   const catalog: ChunkyCatalog = await catalogFactory.deploy(...catalogArgs);
-  await catalog.deployed();
+  await catalog.waitForDeployment();
 
   // So holders do not need to accept each item
-  await chunkies.setAutoAcceptCollection(items.address);
+  await chunkies.setAutoAcceptCollection(await items.getAddress());
 
   const chainId = (await ethers.provider.getNetwork()).chainId;
-  if (chainId !== 31337) {
+  if (chainId !== 31337n) {
     // Skip verification on local chain
     await run('verify:verify', {
-      address: chunkies.address,
+      address: await chunkies.getAddress(),
       constructorArguments: chunkyArgs,
     });
     await run('verify:verify', {
-      address: items.address,
+      address: await items.getAddress(),
       constructorArguments: itemArgs,
     });
     await run('verify:verify', {
-      address: catalog.address,
+      address: await catalog.getAddress(),
       contract: 'contracts/ChunkyCatalog.sol:ChunkyCatalog', // Needed so hardhat can distinguish it from RMRKCatalogImpl
       constructorArguments: catalogArgs,
     });
@@ -299,14 +298,14 @@ async function addItemAssets(items: ChunkyItem, chunkiesAddress: string) {
   // 1st WAY TO DO IT: Adding assets step by step
   let tx = await items.addEquippableAssetEntry(
     C.EQUIPPABLE_GROUP_FOR_ITEMS_LEFT_HAND, // Equippable group
-    ethers.constants.AddressZero, // Catalog address
+    ethers.ZeroAddress, // Catalog address
     `${C.BASE_IPFS_URI}/items/bone/left.json`, // Metadata URI
     [], // Part ids, none since this is not meant to receive any equippable and it is not composed
   );
   await tx.wait();
   tx = await items.addEquippableAssetEntry(
     C.EQUIPPABLE_GROUP_FOR_ITEMS_RIGHT_HAND, // Equippable group
-    ethers.constants.AddressZero, // Catalog address
+    ethers.ZeroAddress, // Catalog address
     `${C.BASE_IPFS_URI}/items/bone/right.json`, // Metadata URI
     [], // Part ids, none since this is not meant to receive any equippable and it is not composed
   );
@@ -372,7 +371,7 @@ async function mintItems(items: ChunkyItem, chunkiesAddress: string) {
   await tx.wait();
   tx = await items.addAssetToToken(newTokenId, boneRightAssetId, 0);
   await tx.wait();
-  tx = await items.nestTransferFrom(deployer.address, chunkiesAddress, newTokenId, 1, []);
+  tx = await items.nestTransferFrom(await deployer.getAddress(), chunkiesAddress, newTokenId, 1, ethers.ZeroHash);
   await tx.wait();
 
   // 2nd WAY TO DO IT: Custom method on items contract
