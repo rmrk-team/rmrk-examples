@@ -22,7 +22,7 @@ We have 3 contracts for Chunkies: `Chunky`, `ChunkyItem` and `ChunkyCatalog`. Ad
    1. `addItemAssets`: Adds equippable assets for each type of item, for both hands. It is done hand by hand to demonstrate basic usage and then using the custom method to add both hands in a single call. It also sets the valid parent for equippable groups to link assets from each hand with the right slot and parent.
    1. `mintItems`. For each item NFT it mints it, adds both assets to the token and nest transfers it to a chunky. It is done step by step to demonstrate basic usage and then using the custom method which does 4 operations in a single call.
 4. `runDeploy.ts` Deploys the contracts, configures everything needed and mints chunkies and items, all using the methods from utils.ts
-5. `runInteract.ts` Equips 2 items in each hand
+5. `runInteract.ts` Equips 2 items in each hand (Edit the file with the chunky collection address before running)
 
 ## Assets
 
@@ -93,7 +93,8 @@ Deploy your contracts, mint NFT and add assets:
 yarn hardhat run scripts/runDeploy.ts --network localhost
 ```
 
-Equip items on Chunky:
+Equip items on Chunky
+Open `scripts/runInteract.ts` file and edit chunky collection contract address, and then run
 ```bash
 yarn hardhat run scripts/runInteract.ts --network localhost
 ```
