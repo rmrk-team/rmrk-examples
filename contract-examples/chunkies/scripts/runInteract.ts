@@ -6,9 +6,9 @@ async function main() {
   const chunkyFactory = await ethers.getContractFactory('Chunky');
   const itemFactory = await ethers.getContractFactory('ChunkyItem');
   const catalogFactory = await ethers.getContractFactory('ChunkyCatalog');
-  const chunkies = <Chunky> chunkyFactory.attach('0xB275C0B949E386460dAfc150fB5D72f4E9a781dA');
-  const items = <ChunkyItem> itemFactory.attach('0x4AF5B3f3129f1d99C51dDdE45231CDff3E1C5bEE');
-  const catalog = <ChunkyCatalog> catalogFactory.attach('0x6a6517d4eddA32e55b013EE8092b56EE46cEeED7');
+  const chunkies = <Chunky> chunkyFactory.attach('0x525263A85Df6603802Db0fba1c1a0B3ab55467D2');
+  const items = <ChunkyItem> itemFactory.attach('0x8F9F31aB99030A835D2181166dd875e9EB132dDe');
+  const catalog = <ChunkyCatalog> catalogFactory.attach('0x84145c8766c464432ebdf3B0FFCdda5194F74cE8');
 
   await chunkies.equip({
     tokenId: 1,

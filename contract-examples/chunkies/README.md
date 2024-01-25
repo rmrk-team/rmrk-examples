@@ -22,6 +22,7 @@ We have 3 contracts for Chunkies: `Chunky`, `ChunkyItem` and `ChunkyCatalog`. Ad
    1. `addItemAssets`: Adds equippable assets for each type of item, for both hands. It is done hand by hand to demonstrate basic usage and then using the custom method to add both hands in a single call. It also sets the valid parent for equippable groups to link assets from each hand with the right slot and parent.
    1. `mintItems`. For each item NFT it mints it, adds both assets to the token and nest transfers it to a chunky. It is done step by step to demonstrate basic usage and then using the custom method which does 4 operations in a single call.
 4. `runDeploy.ts` Deploys the contracts, configures everything needed and mints chunkies and items, all using the methods from utils.ts
+5. `runInteract.ts` Equips 2 items in each hand
 
 ## Assets
 
@@ -69,8 +70,34 @@ There is a single test demonstrating a few points:
 6. Copy .env.example into .env and set your variables
 7. Use `contracts/`, `tests/` and `scripts/` to build your code.
 8. Deploy on testnet: `yarn hardhat run scripts/runDeploy.ts --network moonbaseAlpha`
-   ```
 
-   ```
+### Local Hardhat node testing
+
+To Preview your results in a simple UI, you can run scripts against local hardhat node and use provided UI to preview the result.
+
+In one terminal window run:
+```bash
+yarn hardhat node
+```
+
+Then in another terminal window run:
+
+To deploy utility contracts needed to render your composable NFTs:
+```bash
+yarn hardhat run scripts/deployUtils.ts --network localhost
+```
+
+Deploy your contracts, mint NFT and add assets:
+```bash
+yarn hardhat run scripts/runDeploy.ts --network localhost
+```
+
+Equip items on Chunky:
+```bash
+yarn hardhat run scripts/runInteract.ts --network localhost
+```
+Once done, head over to [react-nextjs-example](../../react-nextjs-example) and follow instructions there to run the UI.
+
+---
 
 Remember to give credit to RMRK if you're using its technology. Check the license and notice for more details.

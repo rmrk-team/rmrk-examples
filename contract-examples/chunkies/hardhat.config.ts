@@ -92,6 +92,18 @@ const config: HardhatUserConfig = {
       accounts: accounts,
       gasPrice: 3000000000,
     },
+    hardhat: {
+      mining: {
+        auto: false,
+        interval: 3000
+      },
+      accounts: [
+        {
+          privateKey: process.env.PRIVATE_KEY || '',
+          balance: '10000000000000000000000',
+        }
+      ],
+    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,

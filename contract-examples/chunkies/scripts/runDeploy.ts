@@ -14,10 +14,15 @@ async function main() {
   console.log(`ChunkyCatalog deployed to ${await catalog.getAddress()}`);
 
   const registry = await getRegistry();
-  let tx1 = await registry.addExternalCollection(await chunkies.getAddress(), C.CHUNKY_METADATA);
-  let tx2 = await registry.addExternalCollection(await items.getAddress(), C.CHUNKY_ITEM_METADATA);
-  await Promise.all([tx1.wait(), tx2.wait()]);
-  console.log('Collections added to Singular Registry');
+  if (registry) {
+    let tx1 = await registry.addExternalCollection(await chunkies.getAddress(), C.CHUNKY_METADATA);
+    let tx2 = await registry.addExternalCollection(
+      await items.getAddress(),
+      C.CHUNKY_ITEM_METADATA,
+    );
+    await Promise.all([tx1.wait(), tx2.wait()]);
+    console.log('Collections added to Singular Registry');
+  }
 
   await configureCatalog(catalog, await items.getAddress());
   console.log('Catalog configured');
