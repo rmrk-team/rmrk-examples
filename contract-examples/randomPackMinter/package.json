@@ -12,5 +12,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@rmrk-team/evm-contracts": "^2.4.2"
+  },
+  "devDependencies": {
+    "hardhat": "^2.19.4"
   }
 }
