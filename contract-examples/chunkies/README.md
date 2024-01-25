@@ -83,6 +83,7 @@ yarn hardhat node
 Then in another terminal window run:
 
 To deploy utility contracts needed to render your composable NFTs:
+> This step is only needed for local network or network unsupported by RMRK where utility contracts are not yet deployed. [You can find supported networks here](https://github.com/rmrk-team/rmrk-js/blob/main/packages/rmrk-evm-utils/src/lib/rmrk-contract-addresses.ts)
 ```bash
 yarn hardhat run scripts/deployUtils.ts --network localhost
 ```
