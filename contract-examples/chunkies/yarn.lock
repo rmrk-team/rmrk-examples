@@ -979,6 +979,13 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.60.tgz#35f3d6213daed95da7f0f73e75bcc6980e90597b"
   integrity sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==
 
+"@types/node@^20.11.5":
+  version "20.11.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.11.6.tgz#6adf4241460e28be53836529c033a41985f85b6e"
+  integrity sha512-+EOokTnksGVgip2PbYbr3xnR7kZigh4LbybAfBAw5BpnQ+FqBYUsvCEjYd70IXKlbohQ64mzEYmMtlWUY8q//Q==
+  dependencies:
+    undici-types "~5.26.4"
+
 "@types/node@^8.0.0":
   version "8.10.66"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.66.tgz#dd035d409df322acc83dff62a602f12a5783bbb3"

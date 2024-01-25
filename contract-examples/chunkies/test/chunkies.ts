@@ -100,6 +100,8 @@ describe('Chunkies', async () => {
         ],
       ],
     ];
-    expect(await renderUtils.composeEquippables(await chunkies.getAddress(), 1, 1)).to.eql(expectedComposed);
+    expect(await renderUtils.composeEquippables(await chunkies.getAddress(), 1, 1)).to.eql(
+      expectedComposed,
+    );
   });
 });

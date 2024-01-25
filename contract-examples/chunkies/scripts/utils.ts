@@ -371,7 +371,13 @@ async function mintItems(items: ChunkyItem, chunkiesAddress: string) {
   await tx.wait();
   tx = await items.addAssetToToken(newTokenId, boneRightAssetId, 0);
   await tx.wait();
-  tx = await items.nestTransferFrom(await deployer.getAddress(), chunkiesAddress, newTokenId, 1, ethers.ZeroHash);
+  tx = await items.nestTransferFrom(
+    await deployer.getAddress(),
+    chunkiesAddress,
+    newTokenId,
+    1,
+    ethers.ZeroHash,
+  );
   await tx.wait();
 
   // 2nd WAY TO DO IT: Custom method on items contract
