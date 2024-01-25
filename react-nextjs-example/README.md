@@ -11,4 +11,4 @@ Then run
 ```bash
 yarn dev
 ```
-And you should be able to preview your NFT by going to `https://localhost:3002/31337/${chunkiesContractAddress}/1` (Your dev server might be running on a different port), where `31337` is hardhat network chainId
+And you should be able to preview your NFT by going to `http://localhost:3002/31337/${chunkiesContractAddress}/1` (Your dev server might be running on a different port), where `31337` is hardhat network chainId
