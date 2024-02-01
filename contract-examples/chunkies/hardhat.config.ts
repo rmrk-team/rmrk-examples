@@ -1,10 +1,8 @@
-import * as dotenv from 'dotenv';
 import { HardhatUserConfig } from 'hardhat/config';
+import 'dotenv/config';
 import '@nomicfoundation/hardhat-ethers';
 import '@nomicfoundation/hardhat-toolbox';
 import 'hardhat-contract-sizer';
-
-dotenv.config();
 
 const accounts = process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [];
 
@@ -91,18 +89,6 @@ const config: HardhatUserConfig = {
       chainId: 56,
       accounts: accounts,
       gasPrice: 3000000000,
-    },
-    hardhat: {
-      mining: {
-        auto: false,
-        interval: 3000
-      },
-      accounts: [
-        {
-          privateKey: process.env.PRIVATE_KEY || '',
-          balance: '10000000000000000000000',
-        }
-      ],
     },
   },
   gasReporter: {

@@ -1,38 +1,43 @@
 import { ethers } from 'hardhat';
 import { expect } from 'chai';
 import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
-import { Chunky, ChunkyCatalog, ChunkyItem, RMRKEquipRenderUtils } from '../typechain-types';
+import { Chunkies, RMRKCatalogImpl, ChunkyItems, RMRKEquipRenderUtils } from '../typechain-types';
 import * as C from '../scripts/constants';
 import {
   addItemAssets,
   configureCatalog,
-  deployContracts,
+  deployCatalog,
+  deployRenderUtils,
+  deployChunkies,
+  deployChunkyItems,
   mintChunkies,
   mintItems,
-} from '../scripts/utils';
+} from '../scripts/deploy-methods';
 
 async function fixture(): Promise<{
-  chunkies: Chunky;
-  items: ChunkyItem;
-  catalog: ChunkyCatalog;
+  chunkies: Chunkies;
+  items: ChunkyItems;
+  catalog: RMRKCatalogImpl;
   renderUtils: RMRKEquipRenderUtils;
 }> {
   const [deployer] = await ethers.getSigners();
 
-  const { chunkies, items, catalog } = await deployContracts();
+  const chunkies = await deployChunkies();
+  const items = await deployChunkyItems();
+  const catalog = await deployCatalog(C.CHUNKY_CATALOG_METADATA, C.CHUNKY_CATALOG_TYPE);
+  const renderUtils = await deployRenderUtils();
+
+  await chunkies.setAutoAcceptCollection(await items.getAddress(), true);
   await configureCatalog(catalog, await items.getAddress());
-  await mintChunkies(chunkies, await catalog.getAddress(), deployer);
+  await mintChunkies(chunkies, await catalog.getAddress(), deployer.address);
   await addItemAssets(items, await chunkies.getAddress());
   await mintItems(items, await chunkies.getAddress());
-
-  const renderUtilsFactory = await ethers.getContractFactory('RMRKEquipRenderUtils');
-  const renderUtils = await renderUtilsFactory.deploy();
 
   return { chunkies, items, catalog, renderUtils };
 }
 
 describe('Chunkies', async () => {
-  let chunkies: Chunky;
+  let chunkies: Chunkies;
   let renderUtils: RMRKEquipRenderUtils;
 
   beforeEach(async function () {
@@ -40,7 +45,7 @@ describe('Chunkies', async () => {
   });
 
   it('can equip items and chunky is composed as expected', async function () {
-    // Chunky 1 has 2 items, a bone and a flag
+    // Chunkies 1 has 2 items, a bone and a flag
     await chunkies.equip({
       tokenId: 1,
       childIndex: 0, // Bone is first item
