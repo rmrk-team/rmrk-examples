@@ -4,16 +4,20 @@ pragma solidity ^0.8.21;
 
 import {RMRKEquippablePreMint} from "@rmrk-team/evm-contracts/contracts/implementations/premint/RMRKEquippablePreMint.sol";
 
-contract ChunkyItem is RMRKEquippablePreMint {
+
+contract ChunkyItems is RMRKEquippablePreMint {
+    // Events 
+    // Variables
+
     // Constructor
     constructor(
           string memory collectionMetadata,
           uint256 maxSupply,
           address royaltyRecipient,
           uint16 royaltyPercentageBps
-      )
+    )
           RMRKEquippablePreMint(
-              "Chunky Items",
+              "ChunkyItems",
               "CHNKITM",
               collectionMetadata,
               maxSupply,
@@ -21,7 +25,8 @@ contract ChunkyItem is RMRKEquippablePreMint {
               royaltyPercentageBps
           )
       {}
-
+      
+    // Methods
     function addHandItemAssets(
         uint64 slotForLeftHand,
         uint64 slotForRightHand,
@@ -37,12 +42,12 @@ contract ChunkyItem is RMRKEquippablePreMint {
         uint256 destinationId,
         string memory tokenURI,
         uint64[] memory assetIds
-    ) public virtual onlyOwnerOrContributor returns (uint256) {
+    ) public virtual onlyOwnerOrContributor {
         uint256 tokenId = nestMint(to, 1, destinationId, tokenURI);
         uint256 length = assetIds.length;
         for (uint256 i = 0; i < length; i++) {
             addAssetToToken(tokenId, assetIds[i], 0);
-            // Only first asset or assets added by token owner are auto-accepted, so we mighty need to accept for the rest of cases
+            // Only first asset or assets added by token owner are auto-accepted, so we might need to accept for the rest of cases
             if (_pendingAssets[tokenId].length != 0) {
                 _acceptAsset(tokenId, 0 , assetIds[i]);
             }

@@ -1,28 +1,20 @@
-import { ethers } from 'hardhat';
+import { ethers, network } from 'hardhat';
 import { MockRMRKRegistry } from '../typechain-types';
 
-export async function getRegistry(): Promise<MockRMRKRegistry | undefined> {
-  const chainId = Number(await ethers.provider.getNetwork().then((network) => network.chainId));
-  const registryAddress = await getRegistryAddress(chainId);
+export async function getRegistry(): Promise<MockRMRKRegistry> {
+  const registryAddress = await getRegistryAddress();
   const contractFactory = await ethers.getContractFactory('MockRMRKRegistry');
-  if (registryAddress) {
-    return <MockRMRKRegistry>contractFactory.attach(registryAddress);
-  } else {
-    console.warn(`Registry contract address not found for chainId ${chainId}`);
-    return undefined;
-  }
+  return <MockRMRKRegistry>contractFactory.attach(registryAddress);
 }
 
-async function getRegistryAddress(chainId: number): Promise<string | undefined> {
-  switch (chainId) {
+async function getRegistryAddress(): Promise<string> {
+  switch (network.config.chainId) {
     // Moonbase Alpha or Hardhat
     case 1287:
       return '0xCEd0e87a29A2570A5866f4a4F3e45fA1dd82FD53';
-
     // Moonbeam
     case 1284:
       return '0x439b93AB25c95d97ccdd1F3c36317f7FC52aE55b';
-
     // Sepolia
     case 11155111:
       return '0x46d4646f62B8FF9dF717DF40e98A08A0F3b270A5';
@@ -48,6 +40,6 @@ async function getRegistryAddress(chainId: number): Promise<string | undefined> 
     case 56:
       return '0x415aEcB40E26Cda3D3Db8b475F56198A994501ea';
     default:
-      return undefined;
+      throw new Error('Unexpected network!');
   }
 }
