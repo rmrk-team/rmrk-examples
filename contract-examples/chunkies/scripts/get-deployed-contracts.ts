@@ -1,4 +1,4 @@
-import { ethers, network } from 'hardhat';
+import { ethers } from 'hardhat';
 import { Chunkies, ChunkyItems, RMRKCatalogImpl } from '../typechain-types';
 import { isHardhatNetwork } from './utils';
 
