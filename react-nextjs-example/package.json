@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@rmrk-team/nft-renderer": "^0.0.8",
+    "@rmrk-team/nft-renderer": "^0.0.10",
     "@rmrk-team/rmrk-evm-utils": "^0.0.7",
-    "@rmrk-team/rmrk-hooks": "^0.0.8",
+    "@rmrk-team/rmrk-hooks": "^0.0.10",
     "@tanstack/react-query": "5.17.19",
     "@wagmi/core": "^2.6.0",
     "idb-keyval": "^6.2.1",
