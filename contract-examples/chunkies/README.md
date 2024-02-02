@@ -4,25 +4,28 @@ In this RMRK example you will find the contracts, scripts, assets and metadata n
 
 ## Contracts
 
-We have 3 contracts for Chunkies: `Chunky`, `ChunkyItem` and `ChunkyCatalog`. Additionally we have `MockRMRKRegistry`.
+We have 2 custom contracts for Chunkies: `Chunkies` nand `ChunkyItems` and `ChunkyCatalog`. Additionally we have `MockRMRKRegistry` and will be using other contracts directly from the `@rmrk-team/evm-contracts` package.
 
-1. `Chunky` is the main character, its assets are composed of 3 parts from the catalog: head, body and hands. It has 2 equippable slots, 1 per hand. It is based on the equippable pre-mint implementation and includes utility methods to mint with an equippable asset and to set collections which are auto-accepted when nest transferred to any of its tokens.
-2. `ChunkyItem` is for the NFTs that can be equipped into the Chunkies. It is also based on the equippable pre-mint implementation. Each NFT will have 2 assets, one to be equipped on each hand. It adds utility methods to create equippable assets for both hands in a single call and to nestMint tokens with a list of assets directly included.
-3. `ChunkyCatalog` is where we define the fixed parts to compose the Chunkies and the slots parts for equippability. It has no special methods, it simply inherits from the ready to use Catalog implementation.
+1. `Chunkies` is the main character, its assets are composed of 3 parts from the catalog: head, body and hands. It has 2 equippable slots, 1 per hand. It is based on the equippable pre-mint implementation and includes utility methods to mint with an equippable asset and to set collections which are auto-accepted when nest transferred to any of its tokens.
+2. `ChunkyItems` is for the NFTs that can be equipped into the Chunkies. It is also based on the equippable pre-mint implementation. Each NFT will have 2 assets, one to be equipped on each hand. It adds utility methods to create equippable assets for both hands in a single call and to nestMint tokens with a list of assets directly included.
 4. `MockRMRKRegistry` is a utility contract needed to be able to add your collection directly from the deploy script. This requires no permissions on testing networks, but you need to receive permission from RMRK in order to run on production, please contact us before trying or your script will break halfway through.
 
 ## Scripts
 
 1. In `constants.ts` we define all constants for the deploy, including URIs for collection metadata, base URIs for all assets, fixed and slot part ids, z indexes and equippable groups. This is a good practice which makes minting scripts much clearer.
-2. `getRegistry.ts` exposes the getRegistry method, this returns an instance of the Registry contract which the deploy script uses to add the collection to Singular.
-3. `utils.ts` has most of the logic to deploy your contracts.
-   1. `deployContracts`: Deploys the 3 Chunky contracts and verifies them. Also sets items to be auto accepted on chunkies when nest transferred.
+2. `get-gegistry.ts` exposes the `getRegistry` method, this returns an instance of the Registry contract which the deploy script uses to add the collection to Singular. It is included in the evm-template repo.
+3. `get-deployed-contracts.ts` exposes the `getDeployedContracts` method, this returns the instances of the deployed contracts for `Chunkies`, `ChunkyItems` and `Catalog`.
+4. `deploy-methods.ts` has most of the logic to deploy your contracts, configure them and mint NFTs. From evm-template it has methods to deploy multiple contract utils and a ready to use catalog. The methods added for this specific use case are:
+   1. `deployChunkies`: Deploys the Chunkies contract and verifies it.
+   1. `deployChunkyItems`: Deploys the ChunkyItems contract and verifies it.
    1. `configureCatalog`: Adds fixed and slots parts to the catalog. For the slot parts, the items are set as a collection which can use this slot.
-   1. `mintChunkies`: For every chunky it adds an equippable asset entry, mints the chunky and adds the asset to it. It is done first step by step to demonstrate basic usage, and then in a single call per NFT using the custom method on the contract.
-   1. `addItemAssets`: Adds equippable assets for each type of item, for both hands. It is done hand by hand to demonstrate basic usage and then using the custom method to add both hands in a single call. It also sets the valid parent for equippable groups to link assets from each hand with the right slot and parent.
+   1. `mintChunkies`: For every chunky it adds an equippable asset entry, mints the chunky and adds the asset to it.
+   1. `addItemAssets`: Adds equippable assets for each type of item, for both hands. It also sets the valid parent for equippable groups to link assets from each hand with the right slot and parent.
    1. `mintItems`. For each item NFT it mints it, adds both assets to the token and nest transfers it to a chunky. It is done step by step to demonstrate basic usage and then using the custom method which does 4 operations in a single call.
-4. `runDeploy.ts` Deploys the contracts, configures everything needed and mints chunkies and items, all using the methods from utils.ts
-5. `runInteract.ts` Equips 2 items in each hand (Edit the file with the chunky collection address before running)
+5. `run-configure-and-mint.ts`: Using the deployed contracts it runs calls all the necessary configurations and mints both chunkies and items.
+6. `run-deploy-catalog.ts`:  Deploys a standard catalog implementation. It is included in the evm-template repo.
+7. `run-deploy-utils.ts`:  Deploys a set of utility contracts needed to render composable NFTs. It is included in the evm-template repo.
+8. `run-equip.ts` Using the deployed contracts, equips two items into the first chunky, one for each hand.
 
 ## Assets
 
@@ -62,14 +65,26 @@ There is a single test demonstrating a few points:
 
 ## Instructions
 
-1. Install packages with `yarn` or `npm i`
-2. Test contracts compile: `yarn hardhat compile`
-3. Check contract size: `yarn hardhat size-contracts`
-4. Run tests: `yarn test`
-5. Run prettier: `yarn prettier`
+1. Install packages with `pnpm`, `npm i` or `pnpm i`. This example uses `pnpm`.
+2. Test contracts compile: `pnpm hardhat compile`
+3. Check contract size: `pnpm hardhat size-contracts`
+4. Run tests: `pnpm test`
+5. Run prettier: `pnpm prettier`
 6. Copy .env.example into .env and set your variables
 7. Use `contracts/`, `tests/` and `scripts/` to build your code.
-8. Deploy on testnet: `yarn hardhat run scripts/runDeploy.ts --network moonbaseAlpha`
+8. Deploy and mint on a supported network or on a local hardhat node (see below).:
+```bash copy
+pnpm hardhat run scripts/run-deploy.ts --network SET_BLOCKCHAIN_HERE
+pnpm hardhat run scripts/run-deploy-catalog.ts --network SET_BLOCKCHAIN_HERE
+# IMPORTANT! Set the deployed addresses into get-deployed-contracts.ts
+pnpm hardhat run scripts/run-configure-and-mint.ts --network SET_BLOCKCHAIN_HERE
+pnpm hardhat run scripts/run-equip.ts --network SET_BLOCKCHAIN_HERE
+```
+
+Supported networks:
+- Local: `localhost`
+- Testing: `moonbaseAlpha`, `sepolia`, `polygonMumbai`, `baseSepolia`
+- Production: `moonbeam`, `mainnet`, `polygon`, `base`, `astar`, `bsc`
 
 ### Local Hardhat node testing
 
@@ -77,26 +92,29 @@ To Preview your results in a simple UI, you can run scripts against local hardha
 
 In one terminal window run:
 ```bash
-yarn hardhat node
+pnpm hardhat node
 ```
 
 Then in another terminal window run:
 
-To deploy utility contracts needed to render your composable NFTs:
-> This step is only needed for local network or network unsupported by RMRK where utility contracts are not yet deployed. [You can find supported networks here](https://github.com/rmrk-team/rmrk-js/blob/main/packages/rmrk-evm-utils/src/lib/rmrk-contract-addresses.ts)
-```bash
-yarn hardhat run scripts/deployUtils.ts --network localhost
+Deploy your contracts, mint NFT and add assets:
+```bash copy
+pnpm hardhat run scripts/run-deploy.ts --network localhost
+pnpm hardhat run scripts/run-deploy-catalog.ts --network localhost
+# IMPORTANT! Set the deployed addresses into get-deployed-contracts.ts
+pnpm hardhat run scripts/run-configure-and-mint.ts --network localhost
 ```
 
-Deploy your contracts, mint NFT and add assets:
+Deploy utility contracts needed to render your composable NFTs:
+> This step is only needed for local network or network unsupported by RMRK where utility contracts are not yet deployed. [You can find supported networks here](https://github.com/rmrk-team/rmrk-js/blob/main/packages/rmrk-evm-utils/src/lib/rmrk-contract-addresses.ts)
 ```bash
-yarn hardhat run scripts/runDeploy.ts --network localhost
+pnpm hardhat run scripts/run-deploy-utils.ts --network localhost
 ```
 
 Equip items on Chunky
-Open `scripts/runInteract.ts` file and edit chunky collection contract address, and then run
+Open `scripts/run-equip.ts` file and edit chunky collection contract address, and then run
 ```bash
-yarn hardhat run scripts/runInteract.ts --network localhost
+pnpm hardhat run scripts/run-equip.ts --network localhost
 ```
 Once done, head over to [react-nextjs-example](../../react-nextjs-example) and follow instructions there to run the UI.
 
