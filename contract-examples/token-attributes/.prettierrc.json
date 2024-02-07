@@ -1,0 +1,30 @@
+{
+  "plugins": ["prettier-plugin-solidity"],
+  "semi": false,
+  "overrides": [
+    {
+      "files": "*.sol",
+      "options": {
+        "printWidth": 80,
+        "tabWidth": 4,
+        "useTabs": false,
+        "singleQuote": false,
+        "bracketSpacing": false,
+        "compiler": "0.8.21"
+      }
+    },
+    {
+      "files": ["*.ts", "*.js"],
+      "options": {
+        "trailingComma": "all",
+        "singleQuote": true,
+        "bracketSpacing": true,
+        "parser": "typescript",
+        "printWidth": 100,
+        "tabWidth": 2,
+        "useTabs": false,
+        "semi": true
+      }
+    }
+  ]
+}
