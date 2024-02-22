@@ -1,5 +1,5 @@
 import { ethers, network } from 'hardhat';
-import { getCookbook } from './getCookbook';
+import { getCookbook } from './get-cookbook';
 
 async function main(): Promise<void> {
   console.log(`Running cookbook journey on ${network.name} blockchain...`);
@@ -11,7 +11,7 @@ async function main(): Promise<void> {
   const cookbook = await getCookbook();
   console.log(`Using Cookbook deployed at ${await cookbook.getAddress()}.`);
 
-  // Journey starts here
+  // Journey starts here:
 
   // 1. Minting NFTs
   // The ipfs URI points to a JSON file that contains the metadata for the NFT.

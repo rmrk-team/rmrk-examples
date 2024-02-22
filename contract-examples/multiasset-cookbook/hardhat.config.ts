@@ -3,10 +3,16 @@ import { HardhatUserConfig } from 'hardhat/config';
 import '@nomicfoundation/hardhat-ethers';
 import '@nomicfoundation/hardhat-toolbox';
 import 'hardhat-contract-sizer';
+import './tasks/emotes';
+import './tasks/attributes';
+import './tasks/metadata';
 
 dotenv.config();
 
-const accounts = process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [];
+const accounts =
+  process.env.PRIVATE_KEY_MASTER && process.env.PRIVATE_KEY_ALICE
+    ? [process.env.PRIVATE_KEY_MASTER, process.env.PRIVATE_KEY_ALICE]
+    : [];
 
 const config: HardhatUserConfig = {
   solidity: {
