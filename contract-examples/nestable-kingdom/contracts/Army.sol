@@ -1,9 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 pragma solidity ^0.8.21;
-import "@rmrk-team/evm-contracts/contracts/implementations/premint/RMRKNestablePreMint.sol";
+
+import {RMRKNestablePreMint} from "@rmrk-team/evm-contracts/contracts/implementations/premint/RMRKNestablePreMint.sol";
+
 
 contract Army is RMRKNestablePreMint {
+    // Events 
     // Variables
     mapping(address => bool) private _autoAcceptCollection;
 
@@ -13,7 +16,7 @@ contract Army is RMRKNestablePreMint {
           uint256 maxSupply,
           address royaltyRecipient,
           uint16 royaltyPercentageBps
-      )
+    )
           RMRKNestablePreMint(
               "Army",
               "ARM",
@@ -28,7 +31,7 @@ contract Army is RMRKNestablePreMint {
     function setAutoAcceptCollection(
         address collection,
         bool autoAccept
-    ) public virtual onlyOwner {
+    ) public virtual onlyOwnerOrContributor {
         _autoAcceptCollection[collection] = autoAccept;
     }
 
@@ -37,7 +40,7 @@ contract Army is RMRKNestablePreMint {
         address childAddress,
         uint256 childId,
         bytes memory
-    ) internal override {
+    ) internal virtual override {
         // Auto accept children if they are from known collections
         if (_autoAcceptCollection[childAddress]) {
             _acceptChild(

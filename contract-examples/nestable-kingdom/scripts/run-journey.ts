@@ -1,5 +1,5 @@
 import { ethers, network } from 'hardhat';
-import { getContracts } from './getContracts';
+import getContracts from './get-contracts';
 
 async function main(): Promise<void> {
   console.log(`Running kingdom journey on ${network.name} blockchain...`);

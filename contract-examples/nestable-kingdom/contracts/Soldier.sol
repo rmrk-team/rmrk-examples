@@ -1,9 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 pragma solidity ^0.8.21;
-import "@rmrk-team/evm-contracts/contracts/implementations/premint/RMRKNestablePreMint.sol";
+
+import {RMRKNestablePreMint} from "@rmrk-team/evm-contracts/contracts/implementations/premint/RMRKNestablePreMint.sol";
+
 
 contract Soldier is RMRKNestablePreMint {
+    // Events 
     // Variables
 
     // Constructor
@@ -12,10 +15,10 @@ contract Soldier is RMRKNestablePreMint {
           uint256 maxSupply,
           address royaltyRecipient,
           uint16 royaltyPercentageBps
-      )
+    )
           RMRKNestablePreMint(
               "Soldier",
-              "SLD",
+              "SD",
               collectionMetadata,
               maxSupply,
               royaltyRecipient,

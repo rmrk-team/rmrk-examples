@@ -1,3 +1,3 @@
 # Instructions
 
-Step by step instructions available at evm.rmrk.docs. Under tutorials, MultiAsset Journey.
+Step by step instructions available [here](https://evm.rmrk.app/tutorials/multiasset-journey/part-1)

@@ -1,10 +1,12 @@
 import { ethers } from 'hardhat';
 import { Kingdom, Army, Soldier } from '../typechain-types';
-import deployKingdom from './deployKingdom';
-import deployArmy from './deployArmy';
-import deploySoldier from './deploySoldier';
+import { deployKingdom, deployArmy, deploySoldier } from './deploy-methods';
 
-export async function getContracts(): Promise<{ kingdom: Kingdom; army: Army; soldier: Soldier }> {
+export default async function getContracts(): Promise<{
+  kingdom: Kingdom;
+  army: Army;
+  soldier: Soldier;
+}> {
   let kingdom: Kingdom;
   let army: Army;
   let soldier: Soldier;

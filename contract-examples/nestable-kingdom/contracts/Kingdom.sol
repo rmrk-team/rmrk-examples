@@ -1,9 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 pragma solidity ^0.8.21;
-import "@rmrk-team/evm-contracts/contracts/implementations/premint/RMRKNestablePreMint.sol";
 
-contract Kingdom is RMRKNestablePreMint {
+import {RMRKEquippablePreMint} from "@rmrk-team/evm-contracts/contracts/implementations/premint/RMRKEquippablePreMint.sol";
+
+
+contract Kingdom is RMRKEquippablePreMint {
+    // Events 
     // Variables
     mapping(address => bool) private _autoAcceptCollection;
 
@@ -13,8 +16,8 @@ contract Kingdom is RMRKNestablePreMint {
           uint256 maxSupply,
           address royaltyRecipient,
           uint16 royaltyPercentageBps
-      )
-          RMRKNestablePreMint(
+    )
+          RMRKEquippablePreMint(
               "Kingdom",
               "KD",
               collectionMetadata,
@@ -28,7 +31,7 @@ contract Kingdom is RMRKNestablePreMint {
     function setAutoAcceptCollection(
         address collection,
         bool autoAccept
-    ) public virtual onlyOwner {
+    ) public virtual onlyOwnerOrContributor {
         _autoAcceptCollection[collection] = autoAccept;
     }
 
@@ -37,7 +40,7 @@ contract Kingdom is RMRKNestablePreMint {
         address childAddress,
         uint256 childId,
         bytes memory
-    ) internal override {
+    ) internal virtual override {
         // Auto accept children if they are from known collections
         if (_autoAcceptCollection[childAddress]) {
             _acceptChild(
