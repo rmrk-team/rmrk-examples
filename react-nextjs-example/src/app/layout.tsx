@@ -2,6 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { type ReactNode } from 'react'
+import '@rmrk-team/rmrk-2d-renderer/dist/styles.css';
+import '@rmrk-team/nft-renderer/dist/styles.css';
 
 import { Providers } from './providers'
 

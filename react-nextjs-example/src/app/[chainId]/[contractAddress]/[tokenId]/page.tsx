@@ -1,7 +1,14 @@
 'use client';
 
-import { NFTRenderer } from '@rmrk-team/nft-renderer';
 import { Address } from 'viem';
+import dynamic from "next/dynamic";
+
+const ComposableRendererContainer = dynamic(
+    () => import('@/components/nft-rendering/composable-renderer-container').then(c => c.ComposableRendererContainer),
+    {
+      ssr: false,
+    },
+);
 
 export default function TokenDisplay({
   params,
@@ -12,14 +19,6 @@ export default function TokenDisplay({
   const chainId = parseInt(chainIdString);
 
   return (
-    <div className="token-container">
-      <div className="token-container-inner">
-        <NFTRenderer
-          chainId={chainId}
-          contractAddress={contractAddress}
-          tokenId={BigInt(tokenId)}
-        />
-      </div>
-    </div>
+    <ComposableRendererContainer chainId={chainId} contractAddress={contractAddress} tokenId={BigInt(tokenId)} />
   );
 }
