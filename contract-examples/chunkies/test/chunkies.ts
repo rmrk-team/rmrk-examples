@@ -62,7 +62,7 @@ describe('Chunkies', async () => {
     });
 
     const expectedComposed = [
-      'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/chunkies/full/1.json', // metadataURI
+      `${C.BASE_IPFS_URI}/chunkies/full/1.json`, // metadataURI
       1n, // equippableGroupId
       '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0', // catalogAddress
       [
@@ -70,17 +70,17 @@ describe('Chunkies', async () => {
         [
           1n, // partId
           4n, // z
-          'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/catalog/fixed/v1/head.json', // metadataURI
+          `${C.BASE_IPFS_URI}/catalog/fixed/v1/head.json`, // metadataURI
         ],
         [
           2n, // partId
           2n, // z
-          'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/catalog/fixed/v1/body.json', // metadataURI
+          `${C.BASE_IPFS_URI}/catalog/fixed/v1/body.json`, // metadataURI
         ],
         [
           3n, // partId
           8n, // z
-          'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/catalog/fixed/v1/hand.json', // metadataURI
+          `${C.BASE_IPFS_URI}/catalog/fixed/v1/hand.json`, // metadataURI
         ],
       ],
       [
@@ -91,8 +91,8 @@ describe('Chunkies', async () => {
           6n, // z
           '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512', // childAddress
           1n, // childId
-          'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/items/bone/left.json', // childAssetMetadata
-          'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/catalog/slots/left_hand.json', // partMetadata
+          `${C.BASE_IPFS_URI}/items/bone/left.json`, // childAssetMetadata
+          `${C.BASE_IPFS_URI}/catalog/slots/left_hand.json`, // partMetadata
         ],
         [
           1002n, // partId
@@ -100,8 +100,8 @@ describe('Chunkies', async () => {
           6n, // z
           '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512', // childAddress
           6n, // childId
-          'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/items/flag/right.json', // childAssetMetadata
-          'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/catalog/slots/right_hand.json', // partMetadata
+          `${C.BASE_IPFS_URI}/items/flag/right.json`, // childAssetMetadata
+          `${C.BASE_IPFS_URI}/catalog/slots/right_hand.json`, // partMetadata
         ],
       ],
     ];

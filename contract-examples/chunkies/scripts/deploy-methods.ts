@@ -19,7 +19,7 @@ export async function deployChunkies(): Promise<Chunkies> {
 
   const contractFactory = await ethers.getContractFactory('Chunkies');
   const args = [
-    'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/chunkies/collection.json',
+    `${C.BASE_IPFS_URI}/chunkies/collection.json`,
     100n,
     (await ethers.getSigners())[0].address,
     300,
@@ -52,7 +52,7 @@ export async function deployChunkyItems(): Promise<ChunkyItems> {
 
   const contractFactory = await ethers.getContractFactory('ChunkyItems');
   const args = [
-    'ipfs://QmadB7RnpfXSd2JX1e6HZLBKwSkBR3PiXhTmkN9dE5DKur/items/collection.json',
+    `${C.BASE_IPFS_URI}/items/collection.json`,
     100n,
     (await ethers.getSigners())[0].address,
     300,
